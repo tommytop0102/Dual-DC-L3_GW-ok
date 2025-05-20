@@ -1,0 +1,65 @@
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    ceos:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-evpnl3gw-dc1-border-leaf1:
+          ansible_host: 172.100.100.13
+        clab-evpnl3gw-dc1-border-leaf2:
+          ansible_host: 172.100.100.14
+        clab-evpnl3gw-dc1-leaf1a:
+          ansible_host: 172.100.100.101
+        clab-evpnl3gw-dc1-leaf1b:
+          ansible_host: 172.100.100.102
+        clab-evpnl3gw-dc1-leaf2a:
+          ansible_host: 172.100.100.103
+        clab-evpnl3gw-dc1-leaf2b:
+          ansible_host: 172.100.100.104
+        clab-evpnl3gw-dc1-spine1:
+          ansible_host: 172.100.100.11
+        clab-evpnl3gw-dc1-spine2:
+          ansible_host: 172.100.100.12
+        clab-evpnl3gw-dc2-border-leaf1:
+          ansible_host: 172.100.100.23
+        clab-evpnl3gw-dc2-border-leaf2:
+          ansible_host: 172.100.100.24
+        clab-evpnl3gw-dc2-leaf1a:
+          ansible_host: 172.100.100.121
+        clab-evpnl3gw-dc2-leaf1b:
+          ansible_host: 172.100.100.122
+        clab-evpnl3gw-dc2-leaf2a:
+          ansible_host: 172.100.100.123
+        clab-evpnl3gw-dc2-leaf2b:
+          ansible_host: 172.100.100.124
+        clab-evpnl3gw-dc2-spine1:
+          ansible_host: 172.100.100.21
+        clab-evpnl3gw-dc2-spine2:
+          ansible_host: 172.100.100.22
+        clab-evpnl3gw-wan:
+          ansible_host: 172.100.100.30
+    linux:
+      hosts:
+        clab-evpnl3gw-dc1-client1:
+          ansible_host: 172.100.100.111
+        clab-evpnl3gw-dc1-client2:
+          ansible_host: 172.100.100.112
+        clab-evpnl3gw-dc1-client3:
+          ansible_host: 172.100.100.113
+        clab-evpnl3gw-dc1-client4:
+          ansible_host: 172.100.100.114
+        clab-evpnl3gw-dc2-client1:
+          ansible_host: 172.100.100.131
+        clab-evpnl3gw-dc2-client2:
+          ansible_host: 172.100.100.132
+        clab-evpnl3gw-dc2-client3:
+          ansible_host: 172.100.100.133
+        clab-evpnl3gw-dc2-client4:
+          ansible_host: 172.100.100.134
