@@ -6,10 +6,10 @@ tenants:
     mac_vrf_vni_base: 10000
     vrfs:
       - name: RED
-        vrf_vni: 10
+        vrf_vni: 110
         vtep_diagnostic:
-          loopback: 10
-          loopback_ip_range: 10.255.10.0/24
+          loopback: 110
+          loopback_ip_range: 10.255.110.0/24
         svis:
           - id: 110
             name: VRF_RED_VLAN_110
@@ -35,12 +35,12 @@ tenants:
               - dc2_pod2
             enabled: true
             ip_address_virtual: 10.1.22.1/24
-      
+
       - name: BLUE
-        vrf_vni: 20
+        vrf_vni: 210
         vtep_diagnostic:
-          loopback: 20
-          loopback_ip_range: 10.255.20.0/24
+          loopback: 210
+          loopback_ip_range: 10.255.210.0/24
         svis:
           - id: 111
             name: VRF_BLUE_VLAN_111

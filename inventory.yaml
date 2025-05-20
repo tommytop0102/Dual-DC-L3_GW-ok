@@ -5,63 +5,63 @@ all:
         WAN_ROUTER:
           hosts:
             WAN:
-              ansible_host: 172.100.100.30
+              ansible_host: 192.168.4.30
         DC1:
           children:
             DC1_SPINES:
               hosts:
                 DC1_SPINE1:
-                  ansible_host: 172.100.100.11
+                  ansible_host: 192.168.4.11
                 DC1_SPINE2:
-                  ansible_host: 172.100.100.12
+                  ansible_host: 192.168.4.12
             DC1_LEAVES:
               children:
                 DC1_LEAF1:
                   hosts:
                     DC1_LEAF1A:
-                      ansible_host: 172.100.100.101
+                      ansible_host: 192.168.4.13
                     DC1_LEAF1B:
-                      ansible_host: 172.100.100.102
+                      ansible_host: 192.168.4.14
                 DC1_LEAF2:
                   hosts:
                     DC1_LEAF2A:
-                      ansible_host: 172.100.100.103
+                      ansible_host: 192.168.4.15
                     DC1_LEAF2B:
-                      ansible_host: 172.100.100.104
+                      ansible_host: 192.168.4.16
             DC1_BORDER_LEAVES:
               hosts:
                 DC1_BORDER_LEAF1:
-                  ansible_host: 172.100.100.13
+                  ansible_host: 192.168.4.17
                 DC1_BORDER_LEAF2:
-                  ansible_host: 172.100.100.14
+                  ansible_host: 192.168.4.18
         DC2:
           children:
             DC2_SPINES:
               hosts:
                 DC2_SPINE1:
-                  ansible_host: 172.100.100.21
+                  ansible_host: 192.168.4.21
                 DC2_SPINE2:
-                  ansible_host: 172.100.100.22
+                  ansible_host: 192.168.4.22
             DC2_LEAVES:
               children:
                 DC2_LEAF1:
                   hosts:
                     DC2_LEAF1A:
-                      ansible_host: 172.100.100.121
+                      ansible_host: 192.168.4.23
                     DC2_LEAF1B:
-                      ansible_host: 172.100.100.122
+                      ansible_host: 192.168.4.24
                 DC2_LEAF2:
                   hosts:
                     DC2_LEAF2A:
-                      ansible_host: 172.100.100.123
+                      ansible_host: 192.168.4.25
                     DC2_LEAF2B:
-                      ansible_host: 172.100.100.124
+                      ansible_host: 192.168.4.26
             DC2_BORDER_LEAVES:
               hosts:
                 DC2_BORDER_LEAF1:
-                  ansible_host: 172.100.100.23
+                  ansible_host: 192.168.4.27
                 DC2_BORDER_LEAF2:
-                  ansible_host: 172.100.100.24
+                  ansible_host: 192.168.4.28
       vars:
         ansible_connection: httpapi
         ansible_httpapi_use_ssl: true
@@ -73,14 +73,14 @@ all:
         ansible_network_os: eos
         ansible_httpapi_port: 443
         ansible_python_interpreter: $(which python3)
-    
+
     NETWORK_SERVICES:
       children:
         DC1_LEAVES:
         DC2_LEAVES:
         DC1_BORDER_LEAVES:
         DC2_BORDER_LEAVES:
-        
+
     CONNECTED_ENDPOINTS:
       children:
         DC1_LEAVES:

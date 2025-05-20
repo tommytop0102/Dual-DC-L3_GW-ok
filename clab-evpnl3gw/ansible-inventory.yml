@@ -12,54 +12,54 @@ all:
         ansible_password: admin
       hosts:
         clab-evpnl3gw-dc1-border-leaf1:
-          ansible_host: 172.100.100.13
+          ansible_host: 192.168.4.17
         clab-evpnl3gw-dc1-border-leaf2:
-          ansible_host: 172.100.100.14
+          ansible_host: 192.168.4.18
         clab-evpnl3gw-dc1-leaf1a:
-          ansible_host: 172.100.100.101
+          ansible_host: 192.168.4.13
         clab-evpnl3gw-dc1-leaf1b:
-          ansible_host: 172.100.100.102
+          ansible_host: 192.168.4.14
         clab-evpnl3gw-dc1-leaf2a:
-          ansible_host: 172.100.100.103
+          ansible_host: 192.168.4.15
         clab-evpnl3gw-dc1-leaf2b:
-          ansible_host: 172.100.100.104
+          ansible_host: 192.168.4.16
         clab-evpnl3gw-dc1-spine1:
-          ansible_host: 172.100.100.11
+          ansible_host: 192.168.4.11
         clab-evpnl3gw-dc1-spine2:
-          ansible_host: 172.100.100.12
+          ansible_host: 192.168.4.12
         clab-evpnl3gw-dc2-border-leaf1:
-          ansible_host: 172.100.100.23
+          ansible_host: 192.168.4.27
         clab-evpnl3gw-dc2-border-leaf2:
-          ansible_host: 172.100.100.24
+          ansible_host: 192.168.4.28
         clab-evpnl3gw-dc2-leaf1a:
-          ansible_host: 172.100.100.121
+          ansible_host: 192.168.4.23
         clab-evpnl3gw-dc2-leaf1b:
-          ansible_host: 172.100.100.122
+          ansible_host: 192.168.4.24
         clab-evpnl3gw-dc2-leaf2a:
-          ansible_host: 172.100.100.123
+          ansible_host: 192.168.4.25
         clab-evpnl3gw-dc2-leaf2b:
-          ansible_host: 172.100.100.124
+          ansible_host: 192.168.4.26
         clab-evpnl3gw-dc2-spine1:
-          ansible_host: 172.100.100.21
+          ansible_host: 192.168.4.21
         clab-evpnl3gw-dc2-spine2:
-          ansible_host: 172.100.100.22
+          ansible_host: 192.168.4.22
         clab-evpnl3gw-wan:
-          ansible_host: 172.100.100.30
+          ansible_host: 192.168.4.30
     linux:
       hosts:
         clab-evpnl3gw-dc1-client1:
-          ansible_host: 172.100.100.111
+          ansible_host: 192.168.4.111
         clab-evpnl3gw-dc1-client2:
-          ansible_host: 172.100.100.112
+          ansible_host: 192.168.4.112
         clab-evpnl3gw-dc1-client3:
-          ansible_host: 172.100.100.113
+          ansible_host: 192.168.4.113
         clab-evpnl3gw-dc1-client4:
-          ansible_host: 172.100.100.114
+          ansible_host: 192.168.4.114
         clab-evpnl3gw-dc2-client1:
-          ansible_host: 172.100.100.131
+          ansible_host: 192.168.4.121
         clab-evpnl3gw-dc2-client2:
-          ansible_host: 172.100.100.132
+          ansible_host: 192.168.4.122
         clab-evpnl3gw-dc2-client3:
-          ansible_host: 172.100.100.133
+          ansible_host: 192.168.4.123
         clab-evpnl3gw-dc2-client4:
-          ansible_host: 172.100.100.134
+          ansible_host: 192.168.4.124

@@ -2,7 +2,7 @@ hostname: DC2_SPINE1
 is_deployed: true
 router_bgp:
   as: '65200'
-  router_id: 192.168.200.1
+  router_id: 10.255.20.1
   distance:
     external_routes: 20
     internal_routes: 200
@@ -16,14 +16,12 @@ router_bgp:
   peer_groups:
   - name: IPv4-UNDERLAY-PEERS
     type: ipv4
-    password: AQQvKeimxJu+uGQ/yYvv9w==
     maximum_routes: 12000
     send_community: all
   - name: EVPN-OVERLAY-PEERS
     type: evpn
     update_source: Loopback0
     bfd: true
-    password: q+VNViP5i4rVjW1cxFv2wA==
     send_community: all
     maximum_routes: 0
     ebgp_multihop: 3
@@ -38,62 +36,62 @@ router_bgp:
   - source_protocol: connected
     route_map: RM-CONN-2-BGP
   neighbors:
-  - ip_address: 172.31.200.1
+  - ip_address: 172.31.20.1
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65201'
     peer: DC2_LEAF1A
     description: DC2_LEAF1A_Ethernet1
-  - ip_address: 172.31.200.5
+  - ip_address: 172.31.20.5
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65201'
     peer: DC2_LEAF1B
     description: DC2_LEAF1B_Ethernet1
-  - ip_address: 172.31.200.9
+  - ip_address: 172.31.20.9
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65202'
     peer: DC2_LEAF2A
     description: DC2_LEAF2A_Ethernet1
-  - ip_address: 172.31.200.13
+  - ip_address: 172.31.20.13
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65202'
     peer: DC2_LEAF2B
     description: DC2_LEAF2B_Ethernet1
-  - ip_address: 172.31.200.17
+  - ip_address: 172.31.20.17
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65203'
     peer: DC2_BORDER_LEAF1
     description: DC2_BORDER_LEAF1_Ethernet1
-  - ip_address: 172.31.200.21
+  - ip_address: 172.31.20.21
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65203'
     peer: DC2_BORDER_LEAF2
     description: DC2_BORDER_LEAF2_Ethernet1
-  - ip_address: 192.168.200.7
+  - ip_address: 10.255.20.7
     peer_group: EVPN-OVERLAY-PEERS
     peer: DC2_BORDER_LEAF1
     description: DC2_BORDER_LEAF1
     remote_as: '65203'
-  - ip_address: 192.168.200.8
+  - ip_address: 10.255.20.8
     peer_group: EVPN-OVERLAY-PEERS
     peer: DC2_BORDER_LEAF2
     description: DC2_BORDER_LEAF2
     remote_as: '65203'
-  - ip_address: 192.168.200.3
+  - ip_address: 10.255.20.3
     peer_group: EVPN-OVERLAY-PEERS
     peer: DC2_LEAF1A
     description: DC2_LEAF1A
     remote_as: '65201'
-  - ip_address: 192.168.200.4
+  - ip_address: 10.255.20.4
     peer_group: EVPN-OVERLAY-PEERS
     peer: DC2_LEAF1B
     description: DC2_LEAF1B
     remote_as: '65201'
-  - ip_address: 192.168.200.5
+  - ip_address: 10.255.20.5
     peer_group: EVPN-OVERLAY-PEERS
     peer: DC2_LEAF2A
     description: DC2_LEAF2A
     remote_as: '65202'
-  - ip_address: 192.168.200.6
+  - ip_address: 10.255.20.6
     peer_group: EVPN-OVERLAY-PEERS
     peer: DC2_LEAF2B
     description: DC2_LEAF2B
@@ -111,7 +109,7 @@ router_bgp:
 static_routes:
 - vrf: MGMT
   destination_address_prefix: 0.0.0.0/0
-  gateway: 172.100.100.1
+  gateway: 192.168.4.1
 service_routing_protocols_model: multi-agent
 ip_routing: true
 vlan_internal_order:
@@ -139,8 +137,8 @@ management_interfaces:
   description: oob_management
   shutdown: false
   vrf: MGMT
-  ip_address: 172.100.100.21/24
-  gateway: 172.100.100.1
+  ip_address: 192.168.4.21/24
+  gateway: 192.168.4.1
   type: oob
 management_api_http:
   enable_vrfs:
@@ -156,7 +154,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.200.0/31
+  ip_address: 172.31.20.0/31
 - name: Ethernet2
   peer: DC2_LEAF1B
   peer_interface: Ethernet1
@@ -165,7 +163,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.200.4/31
+  ip_address: 172.31.20.4/31
 - name: Ethernet3
   peer: DC2_LEAF2A
   peer_interface: Ethernet1
@@ -174,7 +172,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.200.8/31
+  ip_address: 172.31.20.8/31
 - name: Ethernet4
   peer: DC2_LEAF2B
   peer_interface: Ethernet1
@@ -183,7 +181,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.200.12/31
+  ip_address: 172.31.20.12/31
 - name: Ethernet5
   peer: DC2_BORDER_LEAF1
   peer_interface: Ethernet1
@@ -192,7 +190,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.200.16/31
+  ip_address: 172.31.20.16/31
 - name: Ethernet6
   peer: DC2_BORDER_LEAF2
   peer_interface: Ethernet1
@@ -201,17 +199,17 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.200.20/31
+  ip_address: 172.31.20.20/31
 loopback_interfaces:
 - name: Loopback0
   description: EVPN_Overlay_Peering
   shutdown: false
-  ip_address: 192.168.200.1/32
+  ip_address: 10.255.20.1/32
 prefix_lists:
 - name: PL-LOOPBACKS-EVPN-OVERLAY
   sequence_numbers:
   - sequence: 10
-    action: permit 192.168.200.0/24 eq 32
+    action: permit 10.255.20.0/24 eq 32
 route_maps:
 - name: RM-CONN-2-BGP
   sequence_numbers:

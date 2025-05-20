@@ -14,93 +14,93 @@ topology:
   nodes:
     wan:
       kind: ceos
-      mgmt-ipv4: 172.100.100.30
+      mgmt-ipv4: 192.168.4.30
     dc1-spine1:
       kind: ceos
-      mgmt-ipv4: 172.100.100.11
+      mgmt-ipv4: 192.168.4.11
     dc1-spine2:
       kind: ceos
-      mgmt-ipv4: 172.100.100.12
+      mgmt-ipv4: 192.168.4.12
     dc1-border-leaf1:
       kind: ceos
-      mgmt-ipv4: 172.100.100.13
+      mgmt-ipv4: 192.168.4.17
     dc1-border-leaf2:
       kind: ceos
-      mgmt-ipv4: 172.100.100.14
+      mgmt-ipv4: 192.168.4.18
     dc1-leaf1a:
       kind: ceos
-      mgmt-ipv4: 172.100.100.101
+      mgmt-ipv4: 192.168.4.13
     dc1-leaf1b:
       kind: ceos
-      mgmt-ipv4: 172.100.100.102
+      mgmt-ipv4: 192.168.4.14
     dc1-leaf2a:
       kind: ceos
-      mgmt-ipv4: 172.100.100.103
+      mgmt-ipv4: 192.168.4.15
     dc1-leaf2b:
       kind: ceos
-      mgmt-ipv4: 172.100.100.104
+      mgmt-ipv4: 192.168.4.16
     dc1-client1:
       kind: linux
-      mgmt-ipv4: 172.100.100.111
+      mgmt-ipv4: 192.168.4.111
       env:
         TMODE: lacp
     dc1-client2:
       kind: linux
-      mgmt-ipv4: 172.100.100.112
+      mgmt-ipv4: 192.168.4.112
       env:
         TMODE: lacp
     dc1-client3:
       kind: linux
-      mgmt-ipv4: 172.100.100.113
+      mgmt-ipv4: 192.168.4.113
       env:
         TMODE: lacp
     dc1-client4:
       kind: linux
-      mgmt-ipv4: 172.100.100.114
+      mgmt-ipv4: 192.168.4.114
       env:
         TMODE: lacp
     dc2-spine1:
       kind: ceos
-      mgmt-ipv4: 172.100.100.21
+      mgmt-ipv4: 192.168.4.21
     dc2-spine2:
       kind: ceos
-      mgmt-ipv4: 172.100.100.22
+      mgmt-ipv4: 192.168.4.22
     dc2-border-leaf1:
       kind: ceos
-      mgmt-ipv4: 172.100.100.23
+      mgmt-ipv4: 192.168.4.27
     dc2-border-leaf2:
       kind: ceos
-      mgmt-ipv4: 172.100.100.24
+      mgmt-ipv4: 192.168.4.28
     dc2-leaf1a:
       kind: ceos
-      mgmt-ipv4: 172.100.100.121
+      mgmt-ipv4: 192.168.4.23
     dc2-leaf1b:
       kind: ceos
-      mgmt-ipv4: 172.100.100.122
+      mgmt-ipv4: 192.168.4.24
     dc2-leaf2a:
       kind: ceos
-      mgmt-ipv4: 172.100.100.123
+      mgmt-ipv4: 192.168.4.25
     dc2-leaf2b:
       kind: ceos
-      mgmt-ipv4: 172.100.100.124
+      mgmt-ipv4: 192.168.4.26
     dc2-client1:
       kind: linux
-      mgmt-ipv4: 172.100.100.131
+      mgmt-ipv4: 192.168.4.121
       env:
         TMODE: lacp
     dc2-client2:
       kind: linux
-      mgmt-ipv4: 172.100.100.132
+      mgmt-ipv4: 192.168.4.122
       env:
         TMODE: lacp
     dc2-client3:
       kind: linux
-      mgmt-ipv4: 172.100.100.133
+      mgmt-ipv4: 192.168.4.123
       env:
         TMODE: lacp
     dc2-client4:
       kind: linux
-      mgmt-ipv4: 172.100.100.134
+      mgmt-ipv4: 192.168.4.124
       env:
         TMODE: lacp
 
@@ -164,5 +164,5 @@ topology:
 
 mgmt:
   network: ceos_clab
-  ipv4-subnet: 172.100.100.0/24
+  ipv4-subnet: 192.168.4.0/24
   # ipv6-subnet: 2001:172:100:100::/80

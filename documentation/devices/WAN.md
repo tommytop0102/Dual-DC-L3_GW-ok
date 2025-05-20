@@ -45,7 +45,7 @@
 
 | Management Interface | Description | Type | VRF | IP Address | Gateway |
 | -------------------- | ----------- | ---- | --- | ---------- | ------- |
-| Management0 | oob_management | oob | MGMT | 172.100.100.30/24 | 172.100.100.1 |
+| Management0 | oob_management | oob | MGMT | 192.168.4.30/24 | 192.168.4.1 |
 
 ##### IPv6
 
@@ -61,7 +61,7 @@ interface Management0
    description oob_management
    no shutdown
    vrf MGMT
-   ip address 172.100.100.30/24
+   ip address 192.168.4.30/24
 ```
 
 ### IP Name Servers
@@ -211,10 +211,10 @@ vlan internal order ascending range 1006 1199
 
 | Interface | Description | Type | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
 | --------- | ----------- | -----| ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
-| Ethernet1 | P2P_LINK_TO_DC1_BORDER_LEAF1_Ethernet5 | routed | - | 172.31.250.1/31 | default | 9214 | False | - | - |
-| Ethernet2 | P2P_LINK_TO_DC1_BORDER_LEAF2_Ethernet5 | routed | - | 172.31.250.3/31 | default | 9214 | False | - | - |
-| Ethernet3 | P2P_LINK_TO_DC2_BORDER_LEAF1_Ethernet5 | routed | - | 172.31.250.5/31 | default | 9214 | False | - | - |
-| Ethernet4 | P2P_LINK_TO_DC2_BORDER_LEAF2_Ethernet5 | routed | - | 172.31.250.7/31 | default | 9214 | False | - | - |
+| Ethernet1 | P2P_LINK_TO_DC1_BORDER_LEAF1_Ethernet5 | routed | - | 172.31.30.1/31 | default | 9214 | False | - | - |
+| Ethernet2 | P2P_LINK_TO_DC1_BORDER_LEAF2_Ethernet5 | routed | - | 172.31.30.3/31 | default | 9214 | False | - | - |
+| Ethernet3 | P2P_LINK_TO_DC2_BORDER_LEAF1_Ethernet5 | routed | - | 172.31.30.5/31 | default | 9214 | False | - | - |
+| Ethernet4 | P2P_LINK_TO_DC2_BORDER_LEAF2_Ethernet5 | routed | - | 172.31.30.7/31 | default | 9214 | False | - | - |
 
 #### Ethernet Interfaces Device Configuration
 
@@ -225,28 +225,28 @@ interface Ethernet1
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.250.1/31
+   ip address 172.31.30.1/31
 !
 interface Ethernet2
    description P2P_LINK_TO_DC1_BORDER_LEAF2_Ethernet5
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.250.3/31
+   ip address 172.31.30.3/31
 !
 interface Ethernet3
    description P2P_LINK_TO_DC2_BORDER_LEAF1_Ethernet5
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.250.5/31
+   ip address 172.31.30.5/31
 !
 interface Ethernet4
    description P2P_LINK_TO_DC2_BORDER_LEAF2_Ethernet5
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.250.7/31
+   ip address 172.31.30.7/31
 ```
 
 ### Loopback Interfaces
@@ -257,7 +257,7 @@ interface Ethernet4
 
 | Interface | Description | VRF | IP Address |
 | --------- | ----------- | --- | ---------- |
-| Loopback0 | EVPN_Overlay_Peering | default | 192.168.250.1/32 |
+| Loopback0 | EVPN_Overlay_Peering | default | 10.255.30.1/32 |
 
 ##### IPv6
 
@@ -272,7 +272,7 @@ interface Ethernet4
 interface Loopback0
    description EVPN_Overlay_Peering
    no shutdown
-   ip address 192.168.250.1/32
+   ip address 10.255.30.1/32
 ```
 
 ## Routing
@@ -318,13 +318,13 @@ no ip routing vrf MGMT
 
 | VRF | Destination Prefix | Next Hop IP | Exit interface | Administrative Distance | Tag | Route Name | Metric |
 | --- | ------------------ | ----------- | -------------- | ----------------------- | --- | ---------- | ------ |
-| MGMT | 0.0.0.0/0 | 172.100.100.1 | - | 1 | - | - | - |
+| MGMT | 0.0.0.0/0 | 192.168.4.1 | - | 1 | - | - | - |
 
 #### Static Routes Device Configuration
 
 ```eos
 !
-ip route vrf MGMT 0.0.0.0/0 172.100.100.1
+ip route vrf MGMT 0.0.0.0/0 192.168.4.1
 ```
 
 ### Router BGP
@@ -335,7 +335,7 @@ ASN Notation: asplain
 
 | BGP AS | Router ID |
 | ------ | --------- |
-| 65300 | 192.168.250.1 |
+| 65300 | 10.255.30.1 |
 
 | BGP Tuning |
 | ---------- |
@@ -357,36 +357,35 @@ ASN Notation: asplain
 
 | Neighbor | Remote AS | VRF | Shutdown | Send-community | Maximum-routes | Allowas-in | BFD | RIB Pre-Policy Retain | Route-Reflector Client | Passive | TTL Max Hops |
 | -------- | --------- | --- | -------- | -------------- | -------------- | ---------- | --- | --------------------- | ---------------------- | ------- | ------------ |
-| 172.31.250.0 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
-| 172.31.250.2 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
-| 172.31.250.4 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
-| 172.31.250.6 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.31.30.0 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.31.30.2 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.31.30.4 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.31.30.6 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
 
 #### Router BGP Device Configuration
 
 ```eos
 !
 router bgp 65300
-   router-id 192.168.250.1
+   router-id 10.255.30.1
    distance bgp 20 200 200
    maximum-paths 4 ecmp 4
    no bgp default ipv4-unicast
    neighbor IPv4-UNDERLAY-PEERS peer group
-   neighbor IPv4-UNDERLAY-PEERS password 7 <removed>
    neighbor IPv4-UNDERLAY-PEERS send-community
    neighbor IPv4-UNDERLAY-PEERS maximum-routes 12000
-   neighbor 172.31.250.0 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.250.0 remote-as 65103
-   neighbor 172.31.250.0 description DC1_BORDER_LEAF1_Ethernet5
-   neighbor 172.31.250.2 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.250.2 remote-as 65103
-   neighbor 172.31.250.2 description DC1_BORDER_LEAF2_Ethernet5
-   neighbor 172.31.250.4 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.250.4 remote-as 65203
-   neighbor 172.31.250.4 description DC2_BORDER_LEAF1_Ethernet5
-   neighbor 172.31.250.6 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.250.6 remote-as 65203
-   neighbor 172.31.250.6 description DC2_BORDER_LEAF2_Ethernet5
+   neighbor 172.31.30.0 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.31.30.0 remote-as 65103
+   neighbor 172.31.30.0 description DC1_BORDER_LEAF1_Ethernet5
+   neighbor 172.31.30.2 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.31.30.2 remote-as 65103
+   neighbor 172.31.30.2 description DC1_BORDER_LEAF2_Ethernet5
+   neighbor 172.31.30.4 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.31.30.4 remote-as 65203
+   neighbor 172.31.30.4 description DC2_BORDER_LEAF1_Ethernet5
+   neighbor 172.31.30.6 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.31.30.6 remote-as 65203
+   neighbor 172.31.30.6 description DC2_BORDER_LEAF2_Ethernet5
    redistribute connected route-map RM-CONN-2-BGP
    !
    address-family ipv4
@@ -403,14 +402,14 @@ router bgp 65300
 
 | Sequence | Action |
 | -------- | ------ |
-| 10 | permit 192.168.250.0/24 eq 32 |
+| 10 | permit 10.255.30.0/24 eq 32 |
 
 #### Prefix-lists Device Configuration
 
 ```eos
 !
 ip prefix-list PL-LOOPBACKS-EVPN-OVERLAY
-   seq 10 permit 192.168.250.0/24 eq 32
+   seq 10 permit 10.255.30.0/24 eq 32
 ```
 
 ### Route-maps

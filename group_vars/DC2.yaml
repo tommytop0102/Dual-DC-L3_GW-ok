@@ -7,14 +7,14 @@ spine:
   defaults:
     platform: cEOS-LAB
     bgp_as: '65200'
-    loopback_ipv4_pool: 192.168.200.0/24
+    loopback_ipv4_pool: 10.255.20.0/24
   nodes:
     - name: DC2_SPINE1
       id: 1
-      mgmt_ip: 172.100.100.21/24
+      mgmt_ip: 192.168.4.21/24
     - name: DC2_SPINE2
       id: 2
-      mgmt_ip: 172.100.100.22/24
+      mgmt_ip: 192.168.4.22/24
 
 l3leaf:
   defaults:
@@ -28,13 +28,13 @@ l3leaf:
     mlag_interfaces:
       - Ethernet3
       - Ethernet4
-    virtual_router_mac_address: 00:00:00:00:00:01
+    virtual_router_mac_address: 02:05:02:05:02:05
     spanning_tree_mode: mstp
     spanning_tree_priority: 4096
-    loopback_ipv4_pool: 192.168.200.0/24
+    loopback_ipv4_pool: 10.255.20.0/24
     loopback_ipv4_offset: 2
-    vtep_loopback_ipv4_pool: 192.168.202.0/24
-    uplink_ipv4_pool: 172.31.200.0/24
+    vtep_loopback_ipv4_pool: 10.255.21.0/24
+    uplink_ipv4_pool: 172.31.20.0/24
     mlag_peer_ipv4_pool: 10.255.251.0/24
     mlag_peer_l3_ipv4_pool: 10.255.252.0/24
   node_groups:
@@ -48,13 +48,13 @@ l3leaf:
       nodes:
         - name: DC2_LEAF1A
           id: 1
-          mgmt_ip: 172.100.100.121/24
+          mgmt_ip: 192.168.4.23/24
           uplink_switch_interfaces:
             - Ethernet1
             - Ethernet1
         - name: DC2_LEAF1B
           id: 2
-          mgmt_ip: 172.100.100.122/24
+          mgmt_ip: 192.168.4.24/24
           uplink_switch_interfaces:
             - Ethernet2
             - Ethernet2
@@ -68,13 +68,13 @@ l3leaf:
       nodes:
         - name: DC2_LEAF2A
           id: 3
-          mgmt_ip: 172.100.100.123/24
+          mgmt_ip: 192.168.4.25/24
           uplink_switch_interfaces:
             - Ethernet3
             - Ethernet3
         - name: DC2_LEAF2B
           id: 4
-          mgmt_ip: 172.100.100.124/24
+          mgmt_ip: 192.168.4.26/24
           uplink_switch_interfaces:
             - Ethernet4
             - Ethernet4
@@ -97,13 +97,13 @@ l3leaf:
       nodes:
         - name: DC2_BORDER_LEAF1
           id: 5
-          mgmt_ip: 172.100.100.23/24
+          mgmt_ip: 192.168.4.27/24
           uplink_switch_interfaces:
             - Ethernet5
             - Ethernet5
         - name: DC2_BORDER_LEAF2
           id: 6
-          mgmt_ip: 172.100.100.24/24
+          mgmt_ip: 192.168.4.28/24
           uplink_switch_interfaces:
             - Ethernet6
             - Ethernet6

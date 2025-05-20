@@ -15,12 +15,12 @@ super_spine:
   defaults:
     platform: cEOS-LAB
     bgp_as: 65300
-    loopback_ipv4_pool: 192.168.250.0/24
+    loopback_ipv4_pool: 10.255.30.0/24
   nodes:
     - name: WAN
       id: 1
-      mgmt_ip: 172.100.100.30/24
-      uplink_ipv4_pool: 172.31.250.0/24
+      mgmt_ip: 192.168.4.30/24
+      uplink_ipv4_pool: 172.31.30.0/24
       uplink_switch_interfaces:
         - Ethernet5
         - Ethernet5
