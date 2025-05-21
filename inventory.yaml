@@ -74,14 +74,18 @@ all:
         ansible_httpapi_port: 443
         ansible_python_interpreter: $(which python3)
 
-    NETWORK_SERVICES:
+    TENANTS_NETWORKS:
       children:
         DC1_LEAVES:
         DC2_LEAVES:
         DC1_BORDER_LEAVES:
         DC2_BORDER_LEAVES:
-
-    CONNECTED_ENDPOINTS:
+    MLAG_PORT:
       children:
         DC1_LEAVES:
         DC2_LEAVES:
+    PORT_PROFILES:
+      children:
+        DC1_LEAVES:
+        DC2_LEAVES:
+

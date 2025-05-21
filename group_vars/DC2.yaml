@@ -43,8 +43,8 @@ l3leaf:
       filter:
         tenants:
           - Tenant_A
-        tags:
-          - dc2_pod1
+        # tags:
+        #   - dc2_pod1
       nodes:
         - name: DC2_LEAF1A
           id: 21
@@ -63,8 +63,8 @@ l3leaf:
       filter:
         tenants:
           - Tenant_A
-        tags:
-          - dc2_pod2
+        # tags:
+        #   - dc2_pod2
       nodes:
         - name: DC2_LEAF2A
           id: 23
@@ -84,14 +84,16 @@ l3leaf:
         remote_peers:
           - hostname: DC1_BORDER_LEAF1
           - hostname: DC1_BORDER_LEAF2
+        evpn_l2:
+          enabled: true
         evpn_l3:
           enabled: true
           inter_domain: true
       filter:
         tenants:
           - Tenant_A
-        tags:
-          - none
+        # tags:
+        #   - none
         always_include_vrfs_in_tenants:
           - Tenant_A
       nodes:

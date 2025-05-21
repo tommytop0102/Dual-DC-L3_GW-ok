@@ -261,6 +261,14 @@ vlan internal order ascending range 1006 1199
 
 | VLAN ID | Name | Trunk Groups |
 | ------- | ---- | ------------ |
+| 110 | VRF_RED_VLAN_110 | - |
+| 112 | VRF_RED_VLAN_112 | - |
+| 120 | VRF_RED_VLAN_120 | - |
+| 122 | VRF_RED_VLAN_122 | - |
+| 211 | VRF_BLUE_VLAN_211 | - |
+| 213 | VRF_BLUE_VLAN_213 | - |
+| 221 | VRF_BLUE_VLAN_221 | - |
+| 223 | VRF_BLUE_VLAN_223 | - |
 | 3109 | MLAG_iBGP_RED | LEAF_PEER_L3 |
 | 3209 | MLAG_iBGP_BLUE | LEAF_PEER_L3 |
 | 4093 | LEAF_PEER_L3 | LEAF_PEER_L3 |
@@ -269,6 +277,30 @@ vlan internal order ascending range 1006 1199
 ### VLANs Device Configuration
 
 ```eos
+!
+vlan 110
+   name VRF_RED_VLAN_110
+!
+vlan 112
+   name VRF_RED_VLAN_112
+!
+vlan 120
+   name VRF_RED_VLAN_120
+!
+vlan 122
+   name VRF_RED_VLAN_122
+!
+vlan 211
+   name VRF_BLUE_VLAN_211
+!
+vlan 213
+   name VRF_BLUE_VLAN_213
+!
+vlan 221
+   name VRF_BLUE_VLAN_221
+!
+vlan 223
+   name VRF_BLUE_VLAN_223
 !
 vlan 3109
    name MLAG_iBGP_RED
@@ -424,6 +456,14 @@ interface Loopback210
 
 | Interface | Description | VRF |  MTU | Shutdown |
 | --------- | ----------- | --- | ---- | -------- |
+| Vlan110 | VRF_RED_VLAN_110 | RED | - | False |
+| Vlan112 | VRF_RED_VLAN_112 | RED | - | False |
+| Vlan120 | VRF_RED_VLAN_120 | RED | - | False |
+| Vlan122 | VRF_RED_VLAN_122 | RED | - | False |
+| Vlan211 | VRF_BLUE_VLAN_211 | BLUE | - | False |
+| Vlan213 | VRF_BLUE_VLAN_213 | BLUE | - | False |
+| Vlan221 | VRF_BLUE_VLAN_221 | BLUE | - | False |
+| Vlan223 | VRF_BLUE_VLAN_223 | BLUE | - | False |
 | Vlan3109 | MLAG_PEER_L3_iBGP: vrf RED | RED | 9214 | False |
 | Vlan3209 | MLAG_PEER_L3_iBGP: vrf BLUE | BLUE | 9214 | False |
 | Vlan4093 | MLAG_PEER_L3_PEERING | default | 9214 | False |
@@ -433,6 +473,14 @@ interface Loopback210
 
 | Interface | VRF | IP Address | IP Address Virtual | IP Router Virtual Address | VRRP | ACL In | ACL Out |
 | --------- | --- | ---------- | ------------------ | ------------------------- | ---- | ------ | ------- |
+| Vlan110 |  RED  |  -  |  10.1.10.1/24  |  -  |  -  |  -  |  -  |
+| Vlan112 |  RED  |  -  |  10.1.12.1/24  |  -  |  -  |  -  |  -  |
+| Vlan120 |  RED  |  -  |  10.1.20.1/24  |  -  |  -  |  -  |  -  |
+| Vlan122 |  RED  |  -  |  10.1.22.1/24  |  -  |  -  |  -  |  -  |
+| Vlan211 |  BLUE  |  -  |  10.2.11.1/24  |  -  |  -  |  -  |  -  |
+| Vlan213 |  BLUE  |  -  |  10.2.13.1/24  |  -  |  -  |  -  |  -  |
+| Vlan221 |  BLUE  |  -  |  10.2.21.1/24  |  -  |  -  |  -  |  -  |
+| Vlan223 |  BLUE  |  -  |  10.2.23.1/24  |  -  |  -  |  -  |  -  |
 | Vlan3109 |  RED  |  10.255.252.48/31  |  -  |  -  |  -  |  -  |  -  |
 | Vlan3209 |  BLUE  |  10.255.252.48/31  |  -  |  -  |  -  |  -  |  -  |
 | Vlan4093 |  default  |  10.255.252.48/31  |  -  |  -  |  -  |  -  |  -  |
@@ -441,6 +489,54 @@ interface Loopback210
 #### VLAN Interfaces Device Configuration
 
 ```eos
+!
+interface Vlan110
+   description VRF_RED_VLAN_110
+   no shutdown
+   vrf RED
+   ip address virtual 10.1.10.1/24
+!
+interface Vlan112
+   description VRF_RED_VLAN_112
+   no shutdown
+   vrf RED
+   ip address virtual 10.1.12.1/24
+!
+interface Vlan120
+   description VRF_RED_VLAN_120
+   no shutdown
+   vrf RED
+   ip address virtual 10.1.20.1/24
+!
+interface Vlan122
+   description VRF_RED_VLAN_122
+   no shutdown
+   vrf RED
+   ip address virtual 10.1.22.1/24
+!
+interface Vlan211
+   description VRF_BLUE_VLAN_211
+   no shutdown
+   vrf BLUE
+   ip address virtual 10.2.11.1/24
+!
+interface Vlan213
+   description VRF_BLUE_VLAN_213
+   no shutdown
+   vrf BLUE
+   ip address virtual 10.2.13.1/24
+!
+interface Vlan221
+   description VRF_BLUE_VLAN_221
+   no shutdown
+   vrf BLUE
+   ip address virtual 10.2.21.1/24
+!
+interface Vlan223
+   description VRF_BLUE_VLAN_223
+   no shutdown
+   vrf BLUE
+   ip address virtual 10.2.23.1/24
 !
 interface Vlan3109
    description MLAG_PEER_L3_iBGP: vrf RED
@@ -480,6 +576,19 @@ interface Vlan4094
 | UDP port | 4789 |
 | EVPN MLAG Shared Router MAC | mlag-system-id |
 
+##### VLAN to VNI, Flood List and Multicast Group Mappings
+
+| VLAN | VNI | Flood List | Multicast Group |
+| ---- | --- | ---------- | --------------- |
+| 110 | 10110 | - | - |
+| 112 | 10112 | - | - |
+| 120 | 10120 | - | - |
+| 122 | 10122 | - | - |
+| 211 | 10211 | - | - |
+| 213 | 10213 | - | - |
+| 221 | 10221 | - | - |
+| 223 | 10223 | - | - |
+
 ##### VRF to VNI and Multicast Group Mappings
 
 | VRF | VNI | Multicast Group |
@@ -496,6 +605,14 @@ interface Vxlan1
    vxlan source-interface Loopback1
    vxlan virtual-router encapsulation mac-address mlag-system-id
    vxlan udp-port 4789
+   vxlan vlan 110 vni 10110
+   vxlan vlan 112 vni 10112
+   vxlan vlan 120 vni 10120
+   vxlan vlan 122 vni 10122
+   vxlan vlan 211 vni 10211
+   vxlan vlan 213 vni 10213
+   vxlan vlan 221 vni 10221
+   vxlan vlan 223 vni 10223
    vxlan vrf BLUE vni 210
    vxlan vrf RED vni 110
 ```
@@ -661,6 +778,19 @@ ASN Notation: asplain
 | L3 Gateway Configured | True |
 | L3 Gateway Inter-domain | True |
 
+#### Router BGP VLANs
+
+| VLAN | Route-Distinguisher | Both Route-Target | Import Route Target | Export Route-Target | Redistribute |
+| ---- | ------------------- | ----------------- | ------------------- | ------------------- | ------------ |
+| 110 | 10.255.20.27:10110 | 10110:10110<br>remote 10110:10110 | - | - | learned |
+| 112 | 10.255.20.27:10112 | 10112:10112<br>remote 10112:10112 | - | - | learned |
+| 120 | 10.255.20.27:10120 | 10120:10120<br>remote 10120:10120 | - | - | learned |
+| 122 | 10.255.20.27:10122 | 10122:10122<br>remote 10122:10122 | - | - | learned |
+| 211 | 10.255.20.27:10211 | 10211:10211<br>remote 10211:10211 | - | - | learned |
+| 213 | 10.255.20.27:10213 | 10213:10213<br>remote 10213:10213 | - | - | learned |
+| 221 | 10.255.20.27:10221 | 10221:10221<br>remote 10221:10221 | - | - | learned |
+| 223 | 10.255.20.27:10223 | 10223:10223<br>remote 10223:10223 | - | - | learned |
+
 #### Router BGP VRFs
 
 | VRF | Route-Distinguisher | Redistribute |
@@ -723,6 +853,62 @@ router bgp 65203
    neighbor 172.31.20.98 remote-as 65200
    neighbor 172.31.20.98 description DC2_SPINE2_Ethernet5
    redistribute connected route-map RM-CONN-2-BGP
+   !
+   vlan 110
+      rd 10.255.20.27:10110
+      rd evpn domain remote 10.255.20.27:10110
+      route-target both 10110:10110
+      route-target import export evpn domain remote 10110:10110
+      redistribute learned
+   !
+   vlan 112
+      rd 10.255.20.27:10112
+      rd evpn domain remote 10.255.20.27:10112
+      route-target both 10112:10112
+      route-target import export evpn domain remote 10112:10112
+      redistribute learned
+   !
+   vlan 120
+      rd 10.255.20.27:10120
+      rd evpn domain remote 10.255.20.27:10120
+      route-target both 10120:10120
+      route-target import export evpn domain remote 10120:10120
+      redistribute learned
+   !
+   vlan 122
+      rd 10.255.20.27:10122
+      rd evpn domain remote 10.255.20.27:10122
+      route-target both 10122:10122
+      route-target import export evpn domain remote 10122:10122
+      redistribute learned
+   !
+   vlan 211
+      rd 10.255.20.27:10211
+      rd evpn domain remote 10.255.20.27:10211
+      route-target both 10211:10211
+      route-target import export evpn domain remote 10211:10211
+      redistribute learned
+   !
+   vlan 213
+      rd 10.255.20.27:10213
+      rd evpn domain remote 10.255.20.27:10213
+      route-target both 10213:10213
+      route-target import export evpn domain remote 10213:10213
+      redistribute learned
+   !
+   vlan 221
+      rd 10.255.20.27:10221
+      rd evpn domain remote 10.255.20.27:10221
+      route-target both 10221:10221
+      route-target import export evpn domain remote 10221:10221
+      redistribute learned
+   !
+   vlan 223
+      rd 10.255.20.27:10223
+      rd evpn domain remote 10.255.20.27:10223
+      route-target both 10223:10223
+      route-target import export evpn domain remote 10223:10223
+      redistribute learned
    !
    address-family evpn
       neighbor EVPN-OVERLAY-CORE activate

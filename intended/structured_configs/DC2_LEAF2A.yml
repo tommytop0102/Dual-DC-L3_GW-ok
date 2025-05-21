@@ -113,12 +113,60 @@ router_bgp:
     - ip_address: 10.255.252.45
       peer_group: MLAG-IPv4-UNDERLAY-PEER
   vlans:
-  - id: 123
+  - id: 211
     tenant: Tenant_A
-    rd: 10.255.20.25:10123
+    rd: 10.255.20.25:10211
     route_targets:
       both:
-      - 10123:10123
+      - 10211:10211
+    redistribute_routes:
+    - learned
+  - id: 213
+    tenant: Tenant_A
+    rd: 10.255.20.25:10213
+    route_targets:
+      both:
+      - 10213:10213
+    redistribute_routes:
+    - learned
+  - id: 221
+    tenant: Tenant_A
+    rd: 10.255.20.25:10221
+    route_targets:
+      both:
+      - 10221:10221
+    redistribute_routes:
+    - learned
+  - id: 223
+    tenant: Tenant_A
+    rd: 10.255.20.25:10223
+    route_targets:
+      both:
+      - 10223:10223
+    redistribute_routes:
+    - learned
+  - id: 110
+    tenant: Tenant_A
+    rd: 10.255.20.25:10110
+    route_targets:
+      both:
+      - 10110:10110
+    redistribute_routes:
+    - learned
+  - id: 112
+    tenant: Tenant_A
+    rd: 10.255.20.25:10112
+    route_targets:
+      both:
+      - 10112:10112
+    redistribute_routes:
+    - learned
+  - id: 120
+    tenant: Tenant_A
+    rd: 10.255.20.25:10120
+    route_targets:
+      both:
+      - 10120:10120
     redistribute_routes:
     - learned
   - id: 122
@@ -192,13 +240,31 @@ vlans:
   name: MLAG_PEER
   trunk_groups:
   - MLAG
-- id: 123
+- id: 211
+  name: VRF_BLUE_VLAN_211
+  tenant: Tenant_A
+- id: 213
+  name: VRF_BLUE_VLAN_213
+  tenant: Tenant_A
+- id: 221
+  name: VRF_BLUE_VLAN_221
+  tenant: Tenant_A
+- id: 223
   name: VRF_BLUE_VLAN_223
   tenant: Tenant_A
 - id: 3209
   name: MLAG_iBGP_BLUE
   trunk_groups:
   - LEAF_PEER_L3
+  tenant: Tenant_A
+- id: 110
+  name: VRF_RED_VLAN_110
+  tenant: Tenant_A
+- id: 112
+  name: VRF_RED_VLAN_112
+  tenant: Tenant_A
+- id: 120
+  name: VRF_RED_VLAN_120
   tenant: Tenant_A
 - id: 122
   name: VRF_RED_VLAN_122
@@ -220,10 +286,26 @@ vlan_interfaces:
   no_autostate: true
   mtu: 9214
   ip_address: 10.255.251.44/31
-- name: Vlan123
+- name: Vlan211
   tenant: Tenant_A
-  tags:
-  - dc2_pod2
+  description: VRF_BLUE_VLAN_211
+  shutdown: false
+  ip_address_virtual: 10.2.11.1/24
+  vrf: BLUE
+- name: Vlan213
+  tenant: Tenant_A
+  description: VRF_BLUE_VLAN_213
+  shutdown: false
+  ip_address_virtual: 10.2.13.1/24
+  vrf: BLUE
+- name: Vlan221
+  tenant: Tenant_A
+  description: VRF_BLUE_VLAN_221
+  shutdown: false
+  ip_address_virtual: 10.2.21.1/24
+  vrf: BLUE
+- name: Vlan223
+  tenant: Tenant_A
   description: VRF_BLUE_VLAN_223
   shutdown: false
   ip_address_virtual: 10.2.23.1/24
@@ -236,10 +318,26 @@ vlan_interfaces:
   vrf: BLUE
   mtu: 9214
   ip_address: 10.255.252.44/31
+- name: Vlan110
+  tenant: Tenant_A
+  description: VRF_RED_VLAN_110
+  shutdown: false
+  ip_address_virtual: 10.1.10.1/24
+  vrf: RED
+- name: Vlan112
+  tenant: Tenant_A
+  description: VRF_RED_VLAN_112
+  shutdown: false
+  ip_address_virtual: 10.1.12.1/24
+  vrf: RED
+- name: Vlan120
+  tenant: Tenant_A
+  description: VRF_RED_VLAN_120
+  shutdown: false
+  ip_address_virtual: 10.1.20.1/24
+  vrf: RED
 - name: Vlan122
   tenant: Tenant_A
-  tags:
-  - dc2_pod2
   description: VRF_RED_VLAN_122
   shutdown: false
   ip_address_virtual: 10.1.22.1/24
@@ -399,8 +497,20 @@ vxlan_interface:
       source_interface: Loopback1
       virtual_router_encapsulation_mac_address: mlag-system-id
       vlans:
-      - id: 123
-        vni: 10123
+      - id: 211
+        vni: 10211
+      - id: 213
+        vni: 10213
+      - id: 221
+        vni: 10221
+      - id: 223
+        vni: 10223
+      - id: 110
+        vni: 10110
+      - id: 112
+        vni: 10112
+      - id: 120
+        vni: 10120
       - id: 122
         vni: 10122
       vrfs:

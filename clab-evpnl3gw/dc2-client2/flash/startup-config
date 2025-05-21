@@ -1,11 +1,10 @@
-! Startup-config last modified at Wed May 21 05:51:19 2025 by root
+! Startup-config last modified at Wed May 21 09:22:42 2025 by root
 ! device: dc2-client2 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
 aaa authentication policy local allow-nopassword-remote-login
 !
-username admin privilege 15 role network-admin secret sha512 $6$.kFy8q9YdQbt.myp$iA6MyQ3x/wVwe64/nX8eCUrMiTtIFfhigRGN7b9QicpO8e1XwtfUvq0V3nqhe.AqJcAPmKfKjDYvdHHxlwRGB1
-username admin ssh-key ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7OKK6E9C+0WywC4WtBQYoRJTQPtB55Zl+ESwg9k8qONgwqwzrOkSmNlLkuCfasIdLbgZ50QU6I/Jb55c1+RRmDsHu/35Qz/fWhrZ/fwDJoPQAiQlR5q7wdNduzHsukHyuDd6hb9i1wexY57jRwpxblN2fjX4sxblbxUgIwYb1Yoa8KJ0HJNsygF2ojqgK457imV1s7Mgvz6eTV9PKAn2gLd937dnQvYkG+lqllITzzs454aXlgicZMp7ywz27b6AQBL5ulapuAH82jc8IxhWHeV+MIhkxhzTm/krKNz1NLpu/9RnDjWkQANUzxHAKCzuABkwgS3T/6tmJi4UnWAAbo3xjQJj2L37yI08uASGYfgTNoH82Il3f2RbhBk4NO4g/ufJ2MezbldHjimrX8vK2Jz+RvDsWUC/Nm3CiWHE4NPboSO2g50CL3MF12HDNYOZ3dcv3SzP5BqP0xd9D1k0LLArzEYK8KDUbcYIoMLHqoo+KGYFeEkUNJDQ23KBAAoM= coder@code-NUC49
+username admin privilege 15 role network-admin secret sha512 $6$Z33Tu.0q0aoKtwIF$sTHORk1BMZdHWFZ5HLuoJW6sKVdaagGb../5q/ovVcG/ph2XCumVs4QwAaeLrUYdEm60AsITUnpzuLd2zW2B41
 username coder privilege 15 nopassword
 !
 management api http-commands
