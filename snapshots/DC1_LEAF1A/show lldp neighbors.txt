@@ -1,0 +1,30 @@
+Last table change time   : 0:00:41 ago
+Number of table inserts  : 24
+Number of table deletes  : 2
+Number of table drops    : 0
+Number of table age-outs : 2
+
+Port          Neighbor Device ID       Neighbor Port ID    TTL
+---------- ------------------------ ---------------------- ---
+Et1           DC1_SPINE1               Ethernet1           120
+Et2           DC1_SPINE2               Ethernet1           120
+Et3           DC1_LEAF1B               Ethernet3           120
+Et4           DC1_LEAF1B               Ethernet4           120
+Et5           dc1-client1              aac1.abe1.87f1      120
+Et6           dc1-client2              aac1.abc4.f2bb      120
+Ma0           DC1_LEAF1B               Management0         120
+Ma0           DC2_LEAF2A               Management0         120
+Ma0           DC2_SPINE1               Management0         120
+Ma0           dc2-client3              befa.cf8c.39a2      120
+Ma0           dc1-client1              424b.386f.c649      120
+Ma0           dc2-client4              9efb.f102.3787      120
+Ma0           DC2_LEAF2B               Management0         120
+Ma0           DC2_SPINE2               Management0         120
+Ma0           DC2_LEAF1B               Management0         120
+Ma0           dc1-client4              928a.8772.c8eb      120
+Ma0           dc1-client2              ca38.db3c.a940      120
+Ma0           dc2-client1              3ebe.0ca4.39f1      120
+Ma0           dc2-client2              2627.6f5f.f8ff      120
+Ma0           DC1_BORDER_LEAF1         Management0         120
+Ma0           DC2_LEAF1A               Management0         120
+Ma0           DC2_BORDER_LEAF2         Management0         120

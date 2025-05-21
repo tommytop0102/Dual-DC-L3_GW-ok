@@ -1,0 +1,22 @@
+Interface                      Status         Protocol           Description
+Et1                            up             up                 P2P_LINK_TO_DC2_SPINE1_Ethernet3
+Et2                            up             up                 P2P_LINK_TO_DC2_SPINE2_Ethernet3
+Et3                            up             up                 MLAG_PEER_DC2_LEAF2B_Ethernet3
+Et4                            up             up                 MLAG_PEER_DC2_LEAF2B_Ethernet4
+Et5                            up             up                 dc2-server03_Eth1
+Et6                            up             up                 dc2-server04_Eth1
+Lo0                            up             up                 EVPN_Overlay_Peering
+Lo1                            up             up                 VTEP_VXLAN_Tunnel_Source
+Lo110                          up             up                 RED_VTEP_DIAGNOSTICS
+Lo210                          up             up                 BLUE_VTEP_DIAGNOSTICS
+Ma0                            up             up                 oob_management
+Po3                            up             up                 MLAG_PEER_DC2_LEAF2B_Po3
+Po5                            up             up                 dc2-server03_PortChannel5
+Po6                            up             up                 dc2-server04_PortChannel6
+Vl122                          up             up                 VRF_RED_VLAN_122
+Vl123                          up             up                 VRF_BLUE_VLAN_123
+Vl1198                         up             up                 
+Vl1199                         up             up                 
+Vl4093                         up             up                 MLAG_PEER_L3_PEERING
+Vl4094                         up             up                 MLAG_PEER
+Vx1                            up             up                 DC2_LEAF2A_VTEP

@@ -9,10 +9,6 @@
   - [Management API HTTP](#management-api-http)
 - [Authentication](#authentication)
   - [Local Users](#local-users)
-- [Management Security](#management-security)
-  - [Management Security Summary](#management-security-summary)
-  - [Management Security SSL Profiles](#management-security-ssl-profiles)
-  - [Management Security Device Configuration](#management-security-device-configuration)
 - [MLAG](#mlag)
   - [MLAG Summary](#mlag-summary)
   - [MLAG Device Configuration](#mlag-device-configuration)
@@ -122,8 +118,6 @@ ntp server vrf MGMT time.google.com prefer iburst
 | ---- | ----- | ---------------- |
 | False | True | - |
 
-Management HTTPS is using the SSL profile eAPI
-
 #### Management API VRF Access
 
 | VRF Name | IPv4 ACL | IPv6 ACL |
@@ -136,7 +130,6 @@ Management HTTPS is using the SSL profile eAPI
 !
 management api http-commands
    protocol https
-   protocol https ssl profile eAPI
    no shutdown
    !
    vrf MGMT
@@ -158,29 +151,6 @@ management api http-commands
 ```eos
 !
 username admin privilege 15 role network-admin secret sha512 <removed>
-```
-
-## Management Security
-
-### Management Security Summary
-
-| Settings | Value |
-| -------- | ----- |
-
-### Management Security SSL Profiles
-
-| SSL Profile Name | TLS protocol accepted | Certificate filename | Key filename | Cipher List | CRLs |
-| ---------------- | --------------------- | -------------------- | ------------ | ----------- | ---- |
-| eAPI | - | eAPI.crt | eAPI.key | HIGH:!eNULL:!aNULL:!MD5:!ADH:!ANULL | - |
-
-### Management Security Device Configuration
-
-```eos
-!
-management security
-   ssl profile eAPI
-      cipher-list HIGH:!eNULL:!aNULL:!MD5:!ADH:!ANULL
-      certificate eAPI.crt key eAPI.key
 ```
 
 ## MLAG

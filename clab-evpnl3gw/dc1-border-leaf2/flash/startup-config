@@ -1,4 +1,4 @@
-! Startup-config last modified at Tue May 20 09:11:05 2025 by admin
+! Startup-config last modified at Wed May 21 02:04:06 2025 by admin
 ! device: DC1-BORDER-LEAF2 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
@@ -6,7 +6,6 @@ no aaa root
 username admin privilege 15 role network-admin secret sha512 $6$7GTxsrRjnwheeKfR$zhJ8qycVjAJz41rf5JRSfWIzp93IL5WL7sMS/Taz1yfShz.MAnoajCf7R2n1/EZW7PN5QA3Huayl0lVQesBYN1
 !
 management api http-commands
-   protocol https ssl profile eAPI
    no shutdown
    !
    vrf MGMT
@@ -45,11 +44,6 @@ vrf instance BLUE
 vrf instance MGMT
 !
 vrf instance RED
-!
-management security
-   ssl profile eAPI
-      cipher-list HIGH:!eNULL:!aNULL:!MD5:!ADH:!ANULL
-      certificate eAPI.crt key eAPI.key
 !
 interface Port-Channel3
    description MLAG_PEER_DC1_BORDER_LEAF1_Po3
