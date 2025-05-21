@@ -7,6 +7,18 @@ overlay_routing_protocol: ebgp
 
 evpn_vlan_aware_bundles: false
 
+
+aaa_authentication:
+  login:
+    default: "local"
+  policies:
+    local:
+      allow_nopassword: true
+aaa_authorization:
+  exec:
+    default: "local"
+
+
 # bgp peer groups passwords
 # bgp_peer_groups:
 #   ipv4_underlay_peers:
@@ -30,6 +42,11 @@ local_users:
     privilege: 15
     role: network-admin
     sha512_password: "$6$7GTxsrRjnwheeKfR$zhJ8qycVjAJz41rf5JRSfWIzp93IL5WL7sMS/Taz1yfShz.MAnoajCf7R2n1/EZW7PN5QA3Huayl0lVQesBYN1"
+  - name: coder
+    privilege: 15
+    role: network-admin
+    no_password: true
+
 
 name_servers:
   - 1.1.1.1
@@ -73,3 +90,38 @@ mgmt_interface_vrf: MGMT
 #    MGMT:
 #  octa: true
 #  provider: eos-native
+
+# L3 Edge port definitions. This can be any port in the entire Fabric, where IP interfaces are defined.
+l3_edge:
+  # Define a new IP pool that will be used to assign IP addresses to L3 Edge interfaces.
+  p2p_links_ip_pools:
+    - name: DCI_IP_pool
+      ipv4_pool: 172.16.30.0/24
+  # Define a new link profile which will match the IP pool, the used ASNs and include the defined interface into underlay routing
+  p2p_links_profiles:
+    - name: DCI1_profile
+      ip_pool: DCI_IP_pool
+      as: [65103, 65300]
+      include_in_underlay_protocol: true
+    - name: DCI2_profile
+      ip_pool: DCI_IP_pool
+      as: [65203, 65300]
+      include_in_underlay_protocol: true
+  # Define each P2P L3 link and link the nodes, the interfaces and the profile used.
+  p2p_links:
+    - id: 1
+      nodes: [DC1_BORDER_LEAF1, WAN]
+      interfaces: [Ethernet5, Ethernet1]
+      profile: DCI1_profile
+    - id: 2
+      nodes: [DC1_BORDER_LEAF2, WAN]
+      interfaces: [Ethernet5, Ethernet2]
+      profile: DCI1_profile
+    - id: 3
+      nodes: [DC2_BORDER_LEAF1, WAN]
+      interfaces: [Ethernet5, Ethernet3]
+      profile: DCI2_profile
+    - id: 4
+      nodes: [DC2_BORDER_LEAF2, WAN]
+      interfaces: [Ethernet5, Ethernet4]
+      profile: DCI2_profile

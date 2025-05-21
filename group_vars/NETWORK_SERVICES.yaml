@@ -2,7 +2,7 @@
 tenants:
   # Tenant A VRFs / VLANs
   - name: Tenant_A
-    enable_mlag_ibgp_peering_vrfs: false
+    # enable_mlag_ibgp_peering_vrfs: false
     mac_vrf_vni_base: 10000
     vrfs:
       - name: RED
@@ -42,27 +42,27 @@ tenants:
           loopback: 210
           loopback_ip_range: 10.255.210.0/24
         svis:
-          - id: 111
-            name: VRF_BLUE_VLAN_111
+          - id: 211
+            name: VRF_BLUE_VLAN_211
             tags:
               - dc1_pod1
             enabled: true
-            ip_address_virtual: 10.1.11.1/24
+            ip_address_virtual: 10.2.11.1/24
           - id: 113
-            name: VRF_BLUE_VLAN_113
+            name: VRF_BLUE_VLAN_213
             tags:
               - dc1_pod2
             enabled: true
-            ip_address_virtual: 10.1.13.1/24
+            ip_address_virtual: 10.2.13.1/24
           - id: 121
-            name: VRF_BLUE_VLAN_121
+            name: VRF_BLUE_VLAN_221
             tags:
               - dc2_pod1
             enabled: true
-            ip_address_virtual: 10.1.21.1/24
+            ip_address_virtual: 10.2.21.1/24
           - id: 123
-            name: VRF_BLUE_VLAN_123
+            name: VRF_BLUE_VLAN_223
             tags:
               - dc2_pod2
             enabled: true
-            ip_address_virtual: 10.1.23.1/24
+            ip_address_virtual: 10.2.23.1/24

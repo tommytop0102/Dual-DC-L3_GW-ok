@@ -95,40 +95,39 @@
 | ---------------- | ------------------- | ------------------ | ------------------ |
 | 172.31.10.0/24 | 256 | 24 | 9.38 % |
 | 172.31.20.0/24 | 256 | 24 | 9.38 % |
-| 172.31.30.0/24 | 256 | 8 | 3.13 % |
 
 ### Point-To-Point Links Node Allocation
 
 | Node | Node Interface | Node IP Address | Peer Node | Peer Interface | Peer IP Address |
 | ---- | -------------- | --------------- | --------- | -------------- | --------------- |
-| DC1_BORDER_LEAF1 | Ethernet1 | 172.31.10.17/31 | DC1_SPINE1 | Ethernet5 | 172.31.10.16/31 |
-| DC1_BORDER_LEAF1 | Ethernet2 | 172.31.10.19/31 | DC1_SPINE2 | Ethernet5 | 172.31.10.18/31 |
-| DC1_BORDER_LEAF1 | Ethernet5 | 172.31.30.0/31 | WAN | Ethernet1 | 172.31.30.1/31 |
-| DC1_BORDER_LEAF2 | Ethernet1 | 172.31.10.21/31 | DC1_SPINE1 | Ethernet6 | 172.31.10.20/31 |
-| DC1_BORDER_LEAF2 | Ethernet2 | 172.31.10.23/31 | DC1_SPINE2 | Ethernet6 | 172.31.10.22/31 |
-| DC1_BORDER_LEAF2 | Ethernet5 | 172.31.30.2/31 | WAN | Ethernet2 | 172.31.30.3/31 |
-| DC1_LEAF1A | Ethernet1 | 172.31.10.1/31 | DC1_SPINE1 | Ethernet1 | 172.31.10.0/31 |
-| DC1_LEAF1A | Ethernet2 | 172.31.10.3/31 | DC1_SPINE2 | Ethernet1 | 172.31.10.2/31 |
-| DC1_LEAF1B | Ethernet1 | 172.31.10.5/31 | DC1_SPINE1 | Ethernet2 | 172.31.10.4/31 |
-| DC1_LEAF1B | Ethernet2 | 172.31.10.7/31 | DC1_SPINE2 | Ethernet2 | 172.31.10.6/31 |
-| DC1_LEAF2A | Ethernet1 | 172.31.10.9/31 | DC1_SPINE1 | Ethernet3 | 172.31.10.8/31 |
-| DC1_LEAF2A | Ethernet2 | 172.31.10.11/31 | DC1_SPINE2 | Ethernet3 | 172.31.10.10/31 |
-| DC1_LEAF2B | Ethernet1 | 172.31.10.13/31 | DC1_SPINE1 | Ethernet4 | 172.31.10.12/31 |
-| DC1_LEAF2B | Ethernet2 | 172.31.10.15/31 | DC1_SPINE2 | Ethernet4 | 172.31.10.14/31 |
-| DC2_BORDER_LEAF1 | Ethernet1 | 172.31.20.17/31 | DC2_SPINE1 | Ethernet5 | 172.31.20.16/31 |
-| DC2_BORDER_LEAF1 | Ethernet2 | 172.31.20.19/31 | DC2_SPINE2 | Ethernet5 | 172.31.20.18/31 |
-| DC2_BORDER_LEAF1 | Ethernet5 | 172.31.30.4/31 | WAN | Ethernet3 | 172.31.30.5/31 |
-| DC2_BORDER_LEAF2 | Ethernet1 | 172.31.20.21/31 | DC2_SPINE1 | Ethernet6 | 172.31.20.20/31 |
-| DC2_BORDER_LEAF2 | Ethernet2 | 172.31.20.23/31 | DC2_SPINE2 | Ethernet6 | 172.31.20.22/31 |
-| DC2_BORDER_LEAF2 | Ethernet5 | 172.31.30.6/31 | WAN | Ethernet4 | 172.31.30.7/31 |
-| DC2_LEAF1A | Ethernet1 | 172.31.20.1/31 | DC2_SPINE1 | Ethernet1 | 172.31.20.0/31 |
-| DC2_LEAF1A | Ethernet2 | 172.31.20.3/31 | DC2_SPINE2 | Ethernet1 | 172.31.20.2/31 |
-| DC2_LEAF1B | Ethernet1 | 172.31.20.5/31 | DC2_SPINE1 | Ethernet2 | 172.31.20.4/31 |
-| DC2_LEAF1B | Ethernet2 | 172.31.20.7/31 | DC2_SPINE2 | Ethernet2 | 172.31.20.6/31 |
-| DC2_LEAF2A | Ethernet1 | 172.31.20.9/31 | DC2_SPINE1 | Ethernet3 | 172.31.20.8/31 |
-| DC2_LEAF2A | Ethernet2 | 172.31.20.11/31 | DC2_SPINE2 | Ethernet3 | 172.31.20.10/31 |
-| DC2_LEAF2B | Ethernet1 | 172.31.20.13/31 | DC2_SPINE1 | Ethernet4 | 172.31.20.12/31 |
-| DC2_LEAF2B | Ethernet2 | 172.31.20.15/31 | DC2_SPINE2 | Ethernet4 | 172.31.20.14/31 |
+| DC1_BORDER_LEAF1 | Ethernet1 | 172.31.10.57/31 | DC1_SPINE1 | Ethernet5 | 172.31.10.56/31 |
+| DC1_BORDER_LEAF1 | Ethernet2 | 172.31.10.59/31 | DC1_SPINE2 | Ethernet5 | 172.31.10.58/31 |
+| DC1_BORDER_LEAF1 | Ethernet5 | 172.16.30.0/31 | WAN | Ethernet1 | 172.16.30.1/31 |
+| DC1_BORDER_LEAF2 | Ethernet1 | 172.31.10.61/31 | DC1_SPINE1 | Ethernet6 | 172.31.10.60/31 |
+| DC1_BORDER_LEAF2 | Ethernet2 | 172.31.10.63/31 | DC1_SPINE2 | Ethernet6 | 172.31.10.62/31 |
+| DC1_BORDER_LEAF2 | Ethernet5 | 172.16.30.2/31 | WAN | Ethernet2 | 172.16.30.3/31 |
+| DC1_LEAF1A | Ethernet1 | 172.31.10.41/31 | DC1_SPINE1 | Ethernet1 | 172.31.10.40/31 |
+| DC1_LEAF1A | Ethernet2 | 172.31.10.43/31 | DC1_SPINE2 | Ethernet1 | 172.31.10.42/31 |
+| DC1_LEAF1B | Ethernet1 | 172.31.10.45/31 | DC1_SPINE1 | Ethernet2 | 172.31.10.44/31 |
+| DC1_LEAF1B | Ethernet2 | 172.31.10.47/31 | DC1_SPINE2 | Ethernet2 | 172.31.10.46/31 |
+| DC1_LEAF2A | Ethernet1 | 172.31.10.49/31 | DC1_SPINE1 | Ethernet3 | 172.31.10.48/31 |
+| DC1_LEAF2A | Ethernet2 | 172.31.10.51/31 | DC1_SPINE2 | Ethernet3 | 172.31.10.50/31 |
+| DC1_LEAF2B | Ethernet1 | 172.31.10.53/31 | DC1_SPINE1 | Ethernet4 | 172.31.10.52/31 |
+| DC1_LEAF2B | Ethernet2 | 172.31.10.55/31 | DC1_SPINE2 | Ethernet4 | 172.31.10.54/31 |
+| DC2_BORDER_LEAF1 | Ethernet1 | 172.31.20.97/31 | DC2_SPINE1 | Ethernet5 | 172.31.20.96/31 |
+| DC2_BORDER_LEAF1 | Ethernet2 | 172.31.20.99/31 | DC2_SPINE2 | Ethernet5 | 172.31.20.98/31 |
+| DC2_BORDER_LEAF1 | Ethernet5 | 172.16.30.4/31 | WAN | Ethernet3 | 172.16.30.5/31 |
+| DC2_BORDER_LEAF2 | Ethernet1 | 172.31.20.101/31 | DC2_SPINE1 | Ethernet6 | 172.31.20.100/31 |
+| DC2_BORDER_LEAF2 | Ethernet2 | 172.31.20.103/31 | DC2_SPINE2 | Ethernet6 | 172.31.20.102/31 |
+| DC2_BORDER_LEAF2 | Ethernet5 | 172.16.30.6/31 | WAN | Ethernet4 | 172.16.30.7/31 |
+| DC2_LEAF1A | Ethernet1 | 172.31.20.81/31 | DC2_SPINE1 | Ethernet1 | 172.31.20.80/31 |
+| DC2_LEAF1A | Ethernet2 | 172.31.20.83/31 | DC2_SPINE2 | Ethernet1 | 172.31.20.82/31 |
+| DC2_LEAF1B | Ethernet1 | 172.31.20.85/31 | DC2_SPINE1 | Ethernet2 | 172.31.20.84/31 |
+| DC2_LEAF1B | Ethernet2 | 172.31.20.87/31 | DC2_SPINE2 | Ethernet2 | 172.31.20.86/31 |
+| DC2_LEAF2A | Ethernet1 | 172.31.20.89/31 | DC2_SPINE1 | Ethernet3 | 172.31.20.88/31 |
+| DC2_LEAF2A | Ethernet2 | 172.31.20.91/31 | DC2_SPINE2 | Ethernet3 | 172.31.20.90/31 |
+| DC2_LEAF2B | Ethernet1 | 172.31.20.93/31 | DC2_SPINE1 | Ethernet4 | 172.31.20.92/31 |
+| DC2_LEAF2B | Ethernet2 | 172.31.20.95/31 | DC2_SPINE2 | Ethernet4 | 172.31.20.94/31 |
 
 ### Loopback Interfaces (BGP EVPN Peering)
 
@@ -142,22 +141,22 @@
 
 | POD | Node | Loopback0 |
 | --- | ---- | --------- |
-| DC1 | DC1_BORDER_LEAF1 | 10.255.10.7/32 |
-| DC1 | DC1_BORDER_LEAF2 | 10.255.10.8/32 |
-| DC1 | DC1_LEAF1A | 10.255.10.3/32 |
-| DC1 | DC1_LEAF1B | 10.255.10.4/32 |
-| DC1 | DC1_LEAF2A | 10.255.10.5/32 |
-| DC1 | DC1_LEAF2B | 10.255.10.6/32 |
+| DC1 | DC1_BORDER_LEAF1 | 10.255.10.17/32 |
+| DC1 | DC1_BORDER_LEAF2 | 10.255.10.18/32 |
+| DC1 | DC1_LEAF1A | 10.255.10.13/32 |
+| DC1 | DC1_LEAF1B | 10.255.10.14/32 |
+| DC1 | DC1_LEAF2A | 10.255.10.15/32 |
+| DC1 | DC1_LEAF2B | 10.255.10.16/32 |
 | DC1 | DC1_SPINE1 | 10.255.10.1/32 |
 | DC1 | DC1_SPINE2 | 10.255.10.2/32 |
-| DC2 | DC2_BORDER_LEAF1 | 10.255.20.7/32 |
-| DC2 | DC2_BORDER_LEAF2 | 10.255.20.8/32 |
-| DC2 | DC2_LEAF1A | 10.255.20.3/32 |
-| DC2 | DC2_LEAF1B | 10.255.20.4/32 |
-| DC2 | DC2_LEAF2A | 10.255.20.5/32 |
-| DC2 | DC2_LEAF2B | 10.255.20.6/32 |
-| DC2 | DC2_SPINE1 | 10.255.20.1/32 |
-| DC2 | DC2_SPINE2 | 10.255.20.2/32 |
+| DC2 | DC2_BORDER_LEAF1 | 10.255.20.27/32 |
+| DC2 | DC2_BORDER_LEAF2 | 10.255.20.28/32 |
+| DC2 | DC2_LEAF1A | 10.255.20.23/32 |
+| DC2 | DC2_LEAF1B | 10.255.20.24/32 |
+| DC2 | DC2_LEAF2A | 10.255.20.25/32 |
+| DC2 | DC2_LEAF2B | 10.255.20.26/32 |
+| DC2 | DC2_SPINE1 | 10.255.20.3/32 |
+| DC2 | DC2_SPINE2 | 10.255.20.4/32 |
 | AVD_FABRIC | WAN | 10.255.30.1/32 |
 
 ### VTEP Loopback VXLAN Tunnel Source Interfaces (VTEPs Only)
@@ -171,15 +170,15 @@
 
 | POD | Node | Loopback1 |
 | --- | ---- | --------- |
-| DC1 | DC1_BORDER_LEAF1 | 10.255.11.7/32 |
-| DC1 | DC1_BORDER_LEAF2 | 10.255.11.7/32 |
-| DC1 | DC1_LEAF1A | 10.255.11.3/32 |
-| DC1 | DC1_LEAF1B | 10.255.11.3/32 |
-| DC1 | DC1_LEAF2A | 10.255.11.5/32 |
-| DC1 | DC1_LEAF2B | 10.255.11.5/32 |
-| DC2 | DC2_BORDER_LEAF1 | 10.255.21.7/32 |
-| DC2 | DC2_BORDER_LEAF2 | 10.255.21.7/32 |
-| DC2 | DC2_LEAF1A | 10.255.21.3/32 |
-| DC2 | DC2_LEAF1B | 10.255.21.3/32 |
-| DC2 | DC2_LEAF2A | 10.255.21.5/32 |
-| DC2 | DC2_LEAF2B | 10.255.21.5/32 |
+| DC1 | DC1_BORDER_LEAF1 | 10.255.11.17/32 |
+| DC1 | DC1_BORDER_LEAF2 | 10.255.11.17/32 |
+| DC1 | DC1_LEAF1A | 10.255.11.13/32 |
+| DC1 | DC1_LEAF1B | 10.255.11.13/32 |
+| DC1 | DC1_LEAF2A | 10.255.11.15/32 |
+| DC1 | DC1_LEAF2B | 10.255.11.15/32 |
+| DC2 | DC2_BORDER_LEAF1 | 10.255.21.27/32 |
+| DC2 | DC2_BORDER_LEAF2 | 10.255.21.27/32 |
+| DC2 | DC2_LEAF1A | 10.255.21.23/32 |
+| DC2 | DC2_LEAF1B | 10.255.21.23/32 |
+| DC2 | DC2_LEAF2A | 10.255.21.25/32 |
+| DC2 | DC2_LEAF2B | 10.255.21.25/32 |

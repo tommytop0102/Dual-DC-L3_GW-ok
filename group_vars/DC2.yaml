@@ -10,10 +10,10 @@ spine:
     loopback_ipv4_pool: 10.255.20.0/24
   nodes:
     - name: DC2_SPINE1
-      id: 1
+      id: 3
       mgmt_ip: 192.168.4.21/24
     - name: DC2_SPINE2
-      id: 2
+      id: 4
       mgmt_ip: 192.168.4.22/24
 
 l3leaf:
@@ -47,13 +47,13 @@ l3leaf:
           - dc2_pod1
       nodes:
         - name: DC2_LEAF1A
-          id: 1
+          id: 21
           mgmt_ip: 192.168.4.23/24
           uplink_switch_interfaces:
             - Ethernet1
             - Ethernet1
         - name: DC2_LEAF1B
-          id: 2
+          id: 22
           mgmt_ip: 192.168.4.24/24
           uplink_switch_interfaces:
             - Ethernet2
@@ -67,13 +67,13 @@ l3leaf:
           - dc2_pod2
       nodes:
         - name: DC2_LEAF2A
-          id: 3
+          id: 23
           mgmt_ip: 192.168.4.25/24
           uplink_switch_interfaces:
             - Ethernet3
             - Ethernet3
         - name: DC2_LEAF2B
-          id: 4
+          id: 24
           mgmt_ip: 192.168.4.26/24
           uplink_switch_interfaces:
             - Ethernet4
@@ -96,13 +96,13 @@ l3leaf:
           - Tenant_A
       nodes:
         - name: DC2_BORDER_LEAF1
-          id: 5
+          id: 25
           mgmt_ip: 192.168.4.27/24
           uplink_switch_interfaces:
             - Ethernet5
             - Ethernet5
         - name: DC2_BORDER_LEAF2
-          id: 6
+          id: 26
           mgmt_ip: 192.168.4.28/24
           uplink_switch_interfaces:
             - Ethernet6

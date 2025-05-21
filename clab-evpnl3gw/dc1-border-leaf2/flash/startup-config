@@ -1,9 +1,11 @@
-! Startup-config last modified at Wed May 21 02:04:06 2025 by admin
+! Startup-config last modified at Wed May 21 06:58:09 2025 by admin
 ! device: DC1-BORDER-LEAF2 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
+aaa authentication policy local allow-nopassword-remote-login
 !
 username admin privilege 15 role network-admin secret sha512 $6$7GTxsrRjnwheeKfR$zhJ8qycVjAJz41rf5JRSfWIzp93IL5WL7sMS/Taz1yfShz.MAnoajCf7R2n1/EZW7PN5QA3Huayl0lVQesBYN1
+username coder privilege 15 role network-admin nopassword
 !
 management api http-commands
    no shutdown
@@ -31,6 +33,14 @@ system l1
    unsupported speed action error
    unsupported error-correction action error
 !
+vlan 3109
+   name MLAG_iBGP_RED
+   trunk group LEAF_PEER_L3
+!
+vlan 3209
+   name MLAG_iBGP_BLUE
+   trunk group LEAF_PEER_L3
+!
 vlan 4093
    name LEAF_PEER_L3
    trunk group LEAF_PEER_L3
@@ -45,6 +55,8 @@ vrf instance MGMT
 !
 vrf instance RED
 !
+aaa authorization exec default local
+!
 interface Port-Channel3
    description MLAG_PEER_DC1_BORDER_LEAF1_Po3
    switchport mode trunk
@@ -55,13 +67,13 @@ interface Ethernet1
    description P2P_LINK_TO_DC1_SPINE1_Ethernet6
    mtu 9214
    no switchport
-   ip address 172.31.10.21/31
+   ip address 172.31.10.61/31
 !
 interface Ethernet2
    description P2P_LINK_TO_DC1_SPINE2_Ethernet6
    mtu 9214
    no switchport
-   ip address 172.31.10.23/31
+   ip address 172.31.10.63/31
 !
 interface Ethernet3
    description MLAG_PEER_DC1_BORDER_LEAF1_Ethernet3
@@ -75,41 +87,53 @@ interface Ethernet5
    description P2P_LINK_TO_WAN_Ethernet2
    mtu 9214
    no switchport
-   ip address 172.31.30.2/31
+   ip address 172.16.30.2/31
 !
 interface Loopback0
    description EVPN_Overlay_Peering
-   ip address 10.255.10.8/32
+   ip address 10.255.10.18/32
 !
 interface Loopback1
    description VTEP_VXLAN_Tunnel_Source
-   ip address 10.255.11.7/32
+   ip address 10.255.11.17/32
 !
 interface Loopback110
    description RED_VTEP_DIAGNOSTICS
    vrf RED
-   ip address 10.255.110.8/32
+   ip address 10.255.110.18/32
 !
 interface Loopback210
    description BLUE_VTEP_DIAGNOSTICS
    vrf BLUE
-   ip address 10.255.210.8/32
+   ip address 10.255.210.18/32
 !
 interface Management0
    description oob_management
    vrf MGMT
    ip address 192.168.4.18/24
 !
+interface Vlan3109
+   description MLAG_PEER_L3_iBGP: vrf RED
+   mtu 9214
+   vrf RED
+   ip address 10.255.242.29/31
+!
+interface Vlan3209
+   description MLAG_PEER_L3_iBGP: vrf BLUE
+   mtu 9214
+   vrf BLUE
+   ip address 10.255.242.29/31
+!
 interface Vlan4093
    description MLAG_PEER_L3_PEERING
    mtu 9214
-   ip address 10.255.242.9/31
+   ip address 10.255.242.29/31
 !
 interface Vlan4094
    description MLAG_PEER
    mtu 9214
    no autostate
-   ip address 10.255.241.9/31
+   ip address 10.255.241.29/31
 !
 interface Vxlan1
    description DC1_BORDER_LEAF2_VTEP
@@ -120,8 +144,8 @@ interface Vxlan1
    vxlan vrf RED vni 110
 !
 ip virtual-router mac-address 02:04:02:04:02:04
-ip address virtual source-nat vrf BLUE address 10.255.210.8
-ip address virtual source-nat vrf RED address 10.255.110.8
+ip address virtual source-nat vrf BLUE address 10.255.210.18
+ip address virtual source-nat vrf RED address 10.255.110.18
 !
 ip routing
 ip routing vrf BLUE
@@ -135,7 +159,7 @@ ip prefix-list PL-LOOPBACKS-EVPN-OVERLAY
 mlag configuration
    domain-id DC1_BORDER_LEAVES
    local-interface Vlan4094
-   peer-address 10.255.241.8
+   peer-address 10.255.241.28
    peer-link Port-Channel3
    reload-delay mlag 300
    reload-delay non-mlag 330
@@ -155,7 +179,7 @@ router bfd
    multihop interval 300 min-rx 300 multiplier 3
 !
 router bgp 65103
-   router-id 10.255.10.8
+   router-id 10.255.10.18
    no bgp default ipv4-unicast
    distance bgp 20 200 200
    maximum-paths 4 ecmp 4
@@ -187,23 +211,23 @@ router bgp 65103
    neighbor 10.255.10.2 peer group EVPN-OVERLAY-PEERS
    neighbor 10.255.10.2 remote-as 65100
    neighbor 10.255.10.2 description DC1_SPINE2
-   neighbor 10.255.20.7 peer group EVPN-OVERLAY-CORE
-   neighbor 10.255.20.7 remote-as 65203
-   neighbor 10.255.20.7 description DC2_BORDER_LEAF1
-   neighbor 10.255.20.8 peer group EVPN-OVERLAY-CORE
-   neighbor 10.255.20.8 remote-as 65203
-   neighbor 10.255.20.8 description DC2_BORDER_LEAF2
-   neighbor 10.255.242.8 peer group MLAG-IPv4-UNDERLAY-PEER
-   neighbor 10.255.242.8 description DC1_BORDER_LEAF1
-   neighbor 172.31.10.20 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.10.20 remote-as 65100
-   neighbor 172.31.10.20 description DC1_SPINE1_Ethernet6
-   neighbor 172.31.10.22 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.10.22 remote-as 65100
-   neighbor 172.31.10.22 description DC1_SPINE2_Ethernet6
-   neighbor 172.31.30.3 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.30.3 remote-as 65300
-   neighbor 172.31.30.3 description WAN_Ethernet2
+   neighbor 10.255.20.27 peer group EVPN-OVERLAY-CORE
+   neighbor 10.255.20.27 remote-as 65203
+   neighbor 10.255.20.27 description DC2_BORDER_LEAF1
+   neighbor 10.255.20.28 peer group EVPN-OVERLAY-CORE
+   neighbor 10.255.20.28 remote-as 65203
+   neighbor 10.255.20.28 description DC2_BORDER_LEAF2
+   neighbor 10.255.242.28 peer group MLAG-IPv4-UNDERLAY-PEER
+   neighbor 10.255.242.28 description DC1_BORDER_LEAF1
+   neighbor 172.16.30.3 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.16.30.3 remote-as 65300
+   neighbor 172.16.30.3 description WAN
+   neighbor 172.31.10.60 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.31.10.60 remote-as 65100
+   neighbor 172.31.10.60 description DC1_SPINE1_Ethernet6
+   neighbor 172.31.10.62 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.31.10.62 remote-as 65100
+   neighbor 172.31.10.62 description DC1_SPINE2_Ethernet6
    redistribute connected route-map RM-CONN-2-BGP
    !
    address-family evpn
@@ -223,17 +247,19 @@ router bgp 65103
       neighbor EVPN-OVERLAY-PEERS activate
    !
    vrf BLUE
-      rd 10.255.10.8:210
+      rd 10.255.10.18:210
       route-target import evpn 210:210
       route-target export evpn 210:210
-      router-id 10.255.10.8
+      router-id 10.255.10.18
+      neighbor 10.255.242.28 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected
    !
    vrf RED
-      rd 10.255.10.8:110
+      rd 10.255.10.18:110
       route-target import evpn 110:110
       route-target export evpn 110:110
-      router-id 10.255.10.8
+      router-id 10.255.10.18
+      neighbor 10.255.242.28 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected
 !
 router multicast

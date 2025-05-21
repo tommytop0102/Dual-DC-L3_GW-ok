@@ -47,13 +47,13 @@ l3leaf:
           - dc1_pod1
       nodes:
         - name: DC1_LEAF1A
-          id: 1
+          id: 11
           mgmt_ip: 192.168.4.13/24
           uplink_switch_interfaces:
             - Ethernet1
             - Ethernet1
         - name: DC1_LEAF1B
-          id: 2
+          id: 12
           mgmt_ip: 192.168.4.14/24
           uplink_switch_interfaces:
             - Ethernet2
@@ -67,13 +67,13 @@ l3leaf:
           - dc1_pod2
       nodes:
         - name: DC1_LEAF2A
-          id: 3
+          id: 13
           mgmt_ip: 192.168.4.15/24
           uplink_switch_interfaces:
             - Ethernet3
             - Ethernet3
         - name: DC1_LEAF2B
-          id: 4
+          id: 14
           mgmt_ip: 192.168.4.16/24
           uplink_switch_interfaces:
             - Ethernet4
@@ -96,13 +96,13 @@ l3leaf:
           inter_domain: true
       nodes:
         - name: DC1_BORDER_LEAF1
-          id: 5
+          id: 15
           mgmt_ip: 192.168.4.17/24
           uplink_switch_interfaces:
             - Ethernet5
             - Ethernet5
         - name: DC1_BORDER_LEAF2
-          id: 6
+          id: 16
           mgmt_ip: 192.168.4.18/24
           uplink_switch_interfaces:
             - Ethernet6

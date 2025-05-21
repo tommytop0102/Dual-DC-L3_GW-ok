@@ -40,25 +40,17 @@ topology:
       kind: ceos
       mgmt-ipv4: 192.168.4.16
     dc1-client1:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.111
-      env:
-        TMODE: lacp
     dc1-client2:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.112
-      env:
-        TMODE: lacp
     dc1-client3:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.113
-      env:
-        TMODE: lacp
     dc1-client4:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.114
-      env:
-        TMODE: lacp
     dc2-spine1:
       kind: ceos
       mgmt-ipv4: 192.168.4.21
@@ -84,25 +76,17 @@ topology:
       kind: ceos
       mgmt-ipv4: 192.168.4.26
     dc2-client1:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.121
-      env:
-        TMODE: lacp
     dc2-client2:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.122
-      env:
-        TMODE: lacp
     dc2-client3:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.123
-      env:
-        TMODE: lacp
     dc2-client4:
-      kind: linux
+      kind: ceos
       mgmt-ipv4: 192.168.4.124
-      env:
-        TMODE: lacp
 
 
   links:

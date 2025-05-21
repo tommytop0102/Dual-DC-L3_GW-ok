@@ -9,6 +9,8 @@
   - [Management API HTTP](#management-api-http)
 - [Authentication](#authentication)
   - [Local Users](#local-users)
+  - [AAA Authentication](#aaa-authentication)
+  - [AAA Authorization](#aaa-authorization)
 - [Spanning Tree](#spanning-tree)
   - [Spanning Tree Summary](#spanning-tree-summary)
   - [Spanning Tree Device Configuration](#spanning-tree-device-configuration)
@@ -128,12 +130,49 @@ management api http-commands
 | User | Privilege | Role | Disabled | Shell |
 | ---- | --------- | ---- | -------- | ----- |
 | admin | 15 | network-admin | False | - |
+| coder | 15 | network-admin | False | - |
 
 #### Local Users Device Configuration
 
 ```eos
 !
 username admin privilege 15 role network-admin secret sha512 <removed>
+username coder privilege 15 role network-admin nopassword
+```
+
+### AAA Authentication
+
+#### AAA Authentication Summary
+
+| Type | Sub-type | User Stores |
+| ---- | -------- | ---------- |
+| Login | default | local |
+
+Policy local allow-nopassword-remote-login has been enabled.
+
+#### AAA Authentication Device Configuration
+
+```eos
+aaa authentication login default local
+aaa authentication policy local allow-nopassword-remote-login
+!
+```
+
+### AAA Authorization
+
+#### AAA Authorization Summary
+
+| Type | User Stores |
+| ---- | ----------- |
+| Exec | local |
+
+Authorization for configuration commands is disabled.
+
+#### AAA Authorization Device Configuration
+
+```eos
+aaa authorization exec default local
+!
 ```
 
 ## Spanning Tree
@@ -181,10 +220,10 @@ vlan internal order ascending range 1006 1199
 
 | Interface | Description | Type | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
 | --------- | ----------- | -----| ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
-| Ethernet1 | P2P_LINK_TO_DC1_BORDER_LEAF1_Ethernet5 | routed | - | 172.31.30.1/31 | default | 9214 | False | - | - |
-| Ethernet2 | P2P_LINK_TO_DC1_BORDER_LEAF2_Ethernet5 | routed | - | 172.31.30.3/31 | default | 9214 | False | - | - |
-| Ethernet3 | P2P_LINK_TO_DC2_BORDER_LEAF1_Ethernet5 | routed | - | 172.31.30.5/31 | default | 9214 | False | - | - |
-| Ethernet4 | P2P_LINK_TO_DC2_BORDER_LEAF2_Ethernet5 | routed | - | 172.31.30.7/31 | default | 9214 | False | - | - |
+| Ethernet1 | P2P_LINK_TO_DC1_BORDER_LEAF1_Ethernet5 | routed | - | 172.16.30.1/31 | default | 9214 | False | - | - |
+| Ethernet2 | P2P_LINK_TO_DC1_BORDER_LEAF2_Ethernet5 | routed | - | 172.16.30.3/31 | default | 9214 | False | - | - |
+| Ethernet3 | P2P_LINK_TO_DC2_BORDER_LEAF1_Ethernet5 | routed | - | 172.16.30.5/31 | default | 9214 | False | - | - |
+| Ethernet4 | P2P_LINK_TO_DC2_BORDER_LEAF2_Ethernet5 | routed | - | 172.16.30.7/31 | default | 9214 | False | - | - |
 
 #### Ethernet Interfaces Device Configuration
 
@@ -195,28 +234,28 @@ interface Ethernet1
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.30.1/31
+   ip address 172.16.30.1/31
 !
 interface Ethernet2
    description P2P_LINK_TO_DC1_BORDER_LEAF2_Ethernet5
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.30.3/31
+   ip address 172.16.30.3/31
 !
 interface Ethernet3
    description P2P_LINK_TO_DC2_BORDER_LEAF1_Ethernet5
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.30.5/31
+   ip address 172.16.30.5/31
 !
 interface Ethernet4
    description P2P_LINK_TO_DC2_BORDER_LEAF2_Ethernet5
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.31.30.7/31
+   ip address 172.16.30.7/31
 ```
 
 ### Loopback Interfaces
@@ -327,10 +366,10 @@ ASN Notation: asplain
 
 | Neighbor | Remote AS | VRF | Shutdown | Send-community | Maximum-routes | Allowas-in | BFD | RIB Pre-Policy Retain | Route-Reflector Client | Passive | TTL Max Hops |
 | -------- | --------- | --- | -------- | -------------- | -------------- | ---------- | --- | --------------------- | ---------------------- | ------- | ------------ |
-| 172.31.30.0 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
-| 172.31.30.2 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
-| 172.31.30.4 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
-| 172.31.30.6 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.16.30.0 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.16.30.2 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.16.30.4 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
+| 172.16.30.6 | 65203 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - | - |
 
 #### Router BGP Device Configuration
 
@@ -344,18 +383,18 @@ router bgp 65300
    neighbor IPv4-UNDERLAY-PEERS peer group
    neighbor IPv4-UNDERLAY-PEERS send-community
    neighbor IPv4-UNDERLAY-PEERS maximum-routes 12000
-   neighbor 172.31.30.0 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.30.0 remote-as 65103
-   neighbor 172.31.30.0 description DC1_BORDER_LEAF1_Ethernet5
-   neighbor 172.31.30.2 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.30.2 remote-as 65103
-   neighbor 172.31.30.2 description DC1_BORDER_LEAF2_Ethernet5
-   neighbor 172.31.30.4 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.30.4 remote-as 65203
-   neighbor 172.31.30.4 description DC2_BORDER_LEAF1_Ethernet5
-   neighbor 172.31.30.6 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.31.30.6 remote-as 65203
-   neighbor 172.31.30.6 description DC2_BORDER_LEAF2_Ethernet5
+   neighbor 172.16.30.0 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.16.30.0 remote-as 65103
+   neighbor 172.16.30.0 description DC1_BORDER_LEAF1
+   neighbor 172.16.30.2 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.16.30.2 remote-as 65103
+   neighbor 172.16.30.2 description DC1_BORDER_LEAF2
+   neighbor 172.16.30.4 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.16.30.4 remote-as 65203
+   neighbor 172.16.30.4 description DC2_BORDER_LEAF1
+   neighbor 172.16.30.6 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.16.30.6 remote-as 65203
+   neighbor 172.16.30.6 description DC2_BORDER_LEAF2
    redistribute connected route-map RM-CONN-2-BGP
    !
    address-family ipv4

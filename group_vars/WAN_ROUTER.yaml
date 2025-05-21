@@ -20,19 +20,19 @@ super_spine:
     - name: WAN
       id: 1
       mgmt_ip: 192.168.4.30/24
-      uplink_ipv4_pool: 172.31.30.0/24
-      uplink_switch_interfaces:
-        - Ethernet5
-        - Ethernet5
-        - Ethernet5
-        - Ethernet5
-      uplink_switches:
-        - DC1_BORDER_LEAF1
-        - DC1_BORDER_LEAF2
-        - DC2_BORDER_LEAF1
-        - DC2_BORDER_LEAF2
-      uplink_interfaces:
-        - Ethernet1
-        - Ethernet2
-        - Ethernet3
-        - Ethernet4
+      # uplink_ipv4_pool: 172.31.30.0/24
+      # uplink_switch_interfaces:
+      #   - Ethernet5
+      #   - Ethernet5
+      #   - Ethernet5
+      #   - Ethernet5
+      # uplink_switches:
+      #   - DC1_BORDER_LEAF1
+      #   - DC1_BORDER_LEAF2
+      #   - DC2_BORDER_LEAF1
+      #   - DC2_BORDER_LEAF2
+      # uplink_interfaces:
+      #   - Ethernet1
+      #   - Ethernet2
+      #   - Ethernet3
+      #   - Ethernet4

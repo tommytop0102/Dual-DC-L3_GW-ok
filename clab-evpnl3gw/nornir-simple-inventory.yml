@@ -9,6 +9,26 @@ dc1-border-leaf2:
     password: admin
     platform: ceos
     hostname: 192.168.4.18
+dc1-client1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.111
+dc1-client2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.112
+dc1-client3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.113
+dc1-client4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.114
 dc1-leaf1a:
     username: admin
     password: admin
@@ -49,6 +69,26 @@ dc2-border-leaf2:
     password: admin
     platform: ceos
     hostname: 192.168.4.28
+dc2-client1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.121
+dc2-client2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.122
+dc2-client3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.123
+dc2-client4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 192.168.4.124
 dc2-leaf1a:
     username: admin
     password: admin
@@ -84,43 +124,3 @@ wan:
     password: admin
     platform: ceos
     hostname: 192.168.4.30
-dc1-client1:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.111
-dc1-client2:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.112
-dc1-client3:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.113
-dc1-client4:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.114
-dc2-client1:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.121
-dc2-client2:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.122
-dc2-client3:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.123
-dc2-client4:
-    username: 
-    password: 
-    platform: linux
-    hostname: 192.168.4.124

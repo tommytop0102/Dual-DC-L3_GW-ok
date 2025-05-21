@@ -2,7 +2,7 @@ hostname: DC1_LEAF1A
 is_deployed: true
 router_bgp:
   as: '65101'
-  router_id: 10.255.10.3
+  router_id: 10.255.10.13
   distance:
     external_routes: 20
     internal_routes: 200
@@ -42,16 +42,16 @@ router_bgp:
     - name: EVPN-OVERLAY-PEERS
       activate: false
   neighbors:
-  - ip_address: 10.255.242.1
+  - ip_address: 10.255.242.21
     peer_group: MLAG-IPv4-UNDERLAY-PEER
     peer: DC1_LEAF1B
     description: DC1_LEAF1B
-  - ip_address: 172.31.10.0
+  - ip_address: 172.31.10.40
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65100'
     peer: DC1_SPINE1
     description: DC1_SPINE1_Ethernet1
-  - ip_address: 172.31.10.2
+  - ip_address: 172.31.10.42
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65100'
     peer: DC1_SPINE2
@@ -79,8 +79,8 @@ router_bgp:
       activate: true
   vrfs:
   - name: BLUE
-    router_id: 10.255.10.3
-    rd: 10.255.10.3:210
+    router_id: 10.255.10.13
+    rd: 10.255.10.13:210
     route_targets:
       import:
       - address_family: evpn
@@ -92,9 +92,12 @@ router_bgp:
         - 210:210
     redistribute_routes:
     - source_protocol: connected
+    neighbors:
+    - ip_address: 10.255.242.21
+      peer_group: MLAG-IPv4-UNDERLAY-PEER
   - name: RED
-    router_id: 10.255.10.3
-    rd: 10.255.10.3:110
+    router_id: 10.255.10.13
+    rd: 10.255.10.13:110
     route_targets:
       import:
       - address_family: evpn
@@ -106,18 +109,21 @@ router_bgp:
         - 110:110
     redistribute_routes:
     - source_protocol: connected
+    neighbors:
+    - ip_address: 10.255.242.21
+      peer_group: MLAG-IPv4-UNDERLAY-PEER
   vlans:
-  - id: 111
+  - id: 211
     tenant: Tenant_A
-    rd: 10.255.10.3:10111
+    rd: 10.255.10.13:10211
     route_targets:
       both:
-      - 10111:10111
+      - 10211:10211
     redistribute_routes:
     - learned
   - id: 110
     tenant: Tenant_A
-    rd: 10.255.10.3:10110
+    rd: 10.255.10.13:10110
     route_targets:
       both:
       - 10110:10110
@@ -150,6 +156,10 @@ local_users:
   privilege: 15
   role: network-admin
   sha512_password: $6$7GTxsrRjnwheeKfR$zhJ8qycVjAJz41rf5JRSfWIzp93IL5WL7sMS/Taz1yfShz.MAnoajCf7R2n1/EZW7PN5QA3Huayl0lVQesBYN1
+- name: coder
+  privilege: 15
+  role: network-admin
+  no_password: true
 vrfs:
 - name: MGMT
   ip_routing: false
@@ -182,32 +192,50 @@ vlans:
   name: MLAG_PEER
   trunk_groups:
   - MLAG
-- id: 111
-  name: VRF_BLUE_VLAN_111
+- id: 211
+  name: VRF_BLUE_VLAN_211
+  tenant: Tenant_A
+- id: 3209
+  name: MLAG_iBGP_BLUE
+  trunk_groups:
+  - LEAF_PEER_L3
   tenant: Tenant_A
 - id: 110
   name: VRF_RED_VLAN_110
+  tenant: Tenant_A
+- id: 3109
+  name: MLAG_iBGP_RED
+  trunk_groups:
+  - LEAF_PEER_L3
   tenant: Tenant_A
 vlan_interfaces:
 - name: Vlan4093
   description: MLAG_PEER_L3_PEERING
   shutdown: false
   mtu: 9214
-  ip_address: 10.255.242.0/31
+  ip_address: 10.255.242.20/31
 - name: Vlan4094
   description: MLAG_PEER
   shutdown: false
   no_autostate: true
   mtu: 9214
-  ip_address: 10.255.241.0/31
-- name: Vlan111
+  ip_address: 10.255.241.20/31
+- name: Vlan211
   tenant: Tenant_A
   tags:
   - dc1_pod1
-  description: VRF_BLUE_VLAN_111
+  description: VRF_BLUE_VLAN_211
   shutdown: false
-  ip_address_virtual: 10.1.11.1/24
+  ip_address_virtual: 10.2.11.1/24
   vrf: BLUE
+- name: Vlan3209
+  tenant: Tenant_A
+  type: underlay_peering
+  shutdown: false
+  description: 'MLAG_PEER_L3_iBGP: vrf BLUE'
+  vrf: BLUE
+  mtu: 9214
+  ip_address: 10.255.242.20/31
 - name: Vlan110
   tenant: Tenant_A
   tags:
@@ -216,6 +244,14 @@ vlan_interfaces:
   shutdown: false
   ip_address_virtual: 10.1.10.1/24
   vrf: RED
+- name: Vlan3109
+  tenant: Tenant_A
+  type: underlay_peering
+  shutdown: false
+  description: 'MLAG_PEER_L3_iBGP: vrf RED'
+  vrf: RED
+  mtu: 9214
+  ip_address: 10.255.242.20/31
 port_channel_interfaces:
 - name: Port-Channel3
   description: MLAG_PEER_DC1_LEAF1B_Po3
@@ -270,7 +306,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.10.1/31
+  ip_address: 172.31.10.41/31
 - name: Ethernet2
   peer: DC1_SPINE2
   peer_interface: Ethernet1
@@ -279,7 +315,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.31.10.3/31
+  ip_address: 172.31.10.43/31
 - name: Ethernet5
   peer: dc1-server01
   peer_interface: Eth1
@@ -303,7 +339,7 @@ ethernet_interfaces:
 mlag_configuration:
   domain_id: DC1_LEAF1
   local_interface: Vlan4094
-  peer_address: 10.255.241.1
+  peer_address: 10.255.241.21
   peer_link: Port-Channel3
   reload_delay_mlag: '300'
   reload_delay_non_mlag: '330'
@@ -325,21 +361,21 @@ loopback_interfaces:
 - name: Loopback0
   description: EVPN_Overlay_Peering
   shutdown: false
-  ip_address: 10.255.10.3/32
+  ip_address: 10.255.10.13/32
 - name: Loopback1
   description: VTEP_VXLAN_Tunnel_Source
   shutdown: false
-  ip_address: 10.255.11.3/32
+  ip_address: 10.255.11.13/32
 - name: Loopback210
   description: BLUE_VTEP_DIAGNOSTICS
   shutdown: false
   vrf: BLUE
-  ip_address: 10.255.210.3/32
+  ip_address: 10.255.210.13/32
 - name: Loopback110
   description: RED_VTEP_DIAGNOSTICS
   shutdown: false
   vrf: RED
-  ip_address: 10.255.110.3/32
+  ip_address: 10.255.110.13/32
 prefix_lists:
 - name: PL-LOOPBACKS-EVPN-OVERLAY
   sequence_numbers:
@@ -363,8 +399,8 @@ vxlan_interface:
       source_interface: Loopback1
       virtual_router_encapsulation_mac_address: mlag-system-id
       vlans:
-      - id: 111
-        vni: 10111
+      - id: 211
+        vni: 10211
       - id: 110
         vni: 10110
       vrfs:
@@ -374,8 +410,8 @@ vxlan_interface:
         vni: 110
 virtual_source_nat_vrfs:
 - name: BLUE
-  ip_address: 10.255.210.3
+  ip_address: 10.255.210.13
 - name: RED
-  ip_address: 10.255.110.3
+  ip_address: 10.255.110.13
 metadata:
   platform: cEOS-LAB

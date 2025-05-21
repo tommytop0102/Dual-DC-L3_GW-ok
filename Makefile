@@ -13,23 +13,23 @@ deploy: ## Deploy cEOS-Lab Topology
 
 .PHONY: build
 build: ## Build AVD cEOS-Lab Configuration
-	@echo -e "\n############### \e[1;30;42mGenerating and deploying switch configuration\e[0m ###############\n"
+	@echo -e "\n############### \e[1;30;42mGenerating switch configuration\e[0m ###############\n"
 	@ansible-playbook playbooks/fabric-build-config.yaml --flush-cache
 
 .PHONY: provision
 provision: ## Provision AVD cEOS-Lab Configuration
-	@echo -e "\n############### \e[1;30;42mGenerating and deploying switch configuration\e[0m ###############\n"
+	@echo -e "\n############### \e[1;30;42mDeploying switch configuration\e[0m ###############\n"
 	@ansible-playbook playbooks/fabric-provision-config.yaml --flush-cache
 
 .PHONY: snapshot
-snapshot: ## Provision AVD cEOS-Lab Configuration
-	@echo -e "\n############### \e[1;30;42mGenerating and deploying switch configuration\e[0m ###############\n"
+snapshot: ## Snapshot AVD cEOS-Lab Status
+	@echo -e "\n############### \e[1;30;42mSnapshot switch status\e[0m ###############\n"
 	@ansible-playbook playbooks/fabric-snapshot.yaml --flush-cache
 
-.PHONY: validate
-validate: ## Provision AVD cEOS-Lab Configuration
-	@echo -e "\n############### \e[1;30;42mGenerating and deploying switch configuration\e[0m ###############\n"
-	@ansible-playbook playbooks/fabric-validate.yaml --flush-cache
+# .PHONY: validate
+# validate: ## Validate AVD cEOS-Lab Status
+# 	@echo -e "\n############### \e[1;30;42mValidateswitch status\e[0m ###############\n"
+# 	@ansible-playbook playbooks/fabric-validate.yaml
 
 .PHONY: destroy
 destroy: ## Delete cEOS-Lab Deployment and AVD generated config and documentation
