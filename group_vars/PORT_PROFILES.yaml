@@ -7,10 +7,10 @@ port_profiles:
 
 
   - profile: int_trunk_host
-    enabled: false
+    enabled: true
     mode: trunk
-    spanning_tree_portfast: edge
-    spanning_tree_bpduguard: enabled
+    # spanning_tree_portfast: edge
+    # spanning_tree_bpduguard: enabled
 
 
   - profile: int_access_host
