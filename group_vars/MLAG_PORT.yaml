@@ -48,8 +48,8 @@ servers:
         switches:
           - DC1_LEAF2A
           - DC1_LEAF2B
-        mode: trunk
-        vlans: 112
+        mode: access
+        vlans: 120
         # spanning_tree_portfast: edge
         port_channel:
           description: PortChannel5
@@ -67,7 +67,7 @@ servers:
           - DC1_LEAF2A
           - DC1_LEAF2B
         mode: trunk
-        vlans: 211
+        vlans: 213
         # spanning_tree_portfast: edge
         port_channel:
           description: PortChannel6
@@ -85,7 +85,7 @@ servers:
           - DC2_LEAF1A
           - DC2_LEAF1B
         mode: trunk
-        vlans: 120
+        vlans: 111
         # spanning_tree_portfast: edge
         port_channel:
           description: PortChannel5
@@ -103,7 +103,7 @@ servers:
           - DC2_LEAF1A
           - DC2_LEAF1B
         mode: trunk
-        vlans: 122
+        vlans: 112
         # spanning_tree_portfast: edge
         port_channel:
           description: PortChannel6
@@ -120,8 +120,8 @@ servers:
         switches:
           - DC2_LEAF2A
           - DC2_LEAF2B
-        mode: trunk
-        vlans: 221
+        mode: access
+        vlans: 120
         # spanning_tree_portfast: edge
         port_channel:
           description: PortChannel5
@@ -139,7 +139,7 @@ servers:
           - DC2_LEAF2A
           - DC2_LEAF2B
         mode: trunk
-        vlans: all
+        vlans: 214
         # spanning_tree_portfast: edge
         port_channel:
           description: PortChannel6

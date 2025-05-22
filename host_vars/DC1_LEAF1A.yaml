@@ -8,7 +8,7 @@ network_ports:
     enabled: true
     description: "Trunk to DC1-CLIENT1_Eth1"
     mode: trunk
-    vlans: "110-112"
+    vlans: "111"
     profile: int_trunk_host
 
   - switches:
@@ -17,6 +17,6 @@ network_ports:
       - Ethernet6
     enabled: true
     description: "Access to DC1-CLIENT1_Eth2"
-    vlans: "211"
+    vlans: "112"
     profile: int_access_host
 

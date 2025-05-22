@@ -18,7 +18,7 @@ super_spine:
     loopback_ipv4_pool: 10.255.30.0/24
   nodes:
     - name: WAN
-      id: 1
+      id: 31
       mgmt_ip: 192.168.4.30/24
       # uplink_ipv4_pool: 172.31.30.0/24
       # uplink_switch_interfaces:

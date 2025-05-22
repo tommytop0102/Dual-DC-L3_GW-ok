@@ -1,0 +1,55 @@
+! Startup-config last modified at Thu May 22 07:00:51 2025 by root
+! device: dc2-client2 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
+!
+no aaa root
+aaa authentication policy local allow-nopassword-remote-login
+!
+username admin privilege 15 role network-admin secret sha512 $6$WnGKcrxfVDaOa6T6$sBKL7.U0XSeNGEQNQ4RVOJX.Pkdx6K80PoPy4cE0UJCb0wJ3BE6e5yr0K5peysTA14vF8YxTPUNoO9EdsK4fi.
+username coder privilege 15 nopassword
+!
+management api http-commands
+   no shutdown
+   !
+   vrf MGMT
+      no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname dc2-client2
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vrf instance MGMT
+!
+aaa authorization exec default local
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Management0
+   description oob_management
+   vrf MGMT
+   ip address 192.168.4.122/24
+!
+no ip routing
+no ip routing vrf MGMT
+!
+ip route vrf MGMT 0.0.0.0/0 192.168.4.1
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+end

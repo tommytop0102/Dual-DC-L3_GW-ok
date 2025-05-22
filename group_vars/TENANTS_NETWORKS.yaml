@@ -11,58 +11,44 @@ tenants:
           loopback: 110
           loopback_ip_range: 10.255.110.0/24
         svis:
-          - id: 110
-            name: VRF_RED_VLAN_110
+          - id: 111
+            name: VRF_RED_VLAN_111
             # tags:
             #   - dc1_pod1
             enabled: true
-            ip_address_virtual: 10.1.10.1/24
+            ip_address_virtual: 10.1.11.1/24
           - id: 112
             name: VRF_RED_VLAN_112
             # tags:
             #   - dc1_pod2
             enabled: true
             ip_address_virtual: 10.1.12.1/24
-          - id: 120
-            name: VRF_RED_VLAN_120
-            # tags:
-            #   - dc2_pod1
-            enabled: true
-            ip_address_virtual: 10.1.20.1/24
-          - id: 122
-            name: VRF_RED_VLAN_122
-            # tags:
-            #   - dc2_pod2
-            enabled: true
-            ip_address_virtual: 10.1.22.1/24
+
+
 
       - name: BLUE
-        vrf_vni: 210
+        vrf_vni: 220
         vtep_diagnostic:
-          loopback: 210
-          loopback_ip_range: 10.255.210.0/24
+          loopback: 220
+          loopback_ip_range: 10.255.220.0/24
         svis:
-          - id: 211
-            name: VRF_BLUE_VLAN_211
-            # tags:
-            #   - dc1_pod1
-            enabled: true
-            ip_address_virtual: 10.2.11.1/24
           - id: 213
             name: VRF_BLUE_VLAN_213
             # tags:
-            #   - dc1_pod2
+            #   - dc1_pod1
             enabled: true
             ip_address_virtual: 10.2.13.1/24
-          - id: 221
-            name: VRF_BLUE_VLAN_221
+          - id: 214
+            name: VRF_BLUE_VLAN_214
             # tags:
-            #   - dc2_pod1
+            #   - dc1_pod2
             enabled: true
-            ip_address_virtual: 10.2.21.1/24
-          - id: 223
-            name: VRF_BLUE_VLAN_223
-            # tags:
-            #   - dc2_pod2
-            enabled: true
-            ip_address_virtual: 10.2.23.1/24
+            ip_address_virtual: 10.2.14.1/24
+    l2vlans:
+      - id: 120
+        vni_override: 55120
+        name: Motion_VLAN_120
+
+
+
+

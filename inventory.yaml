@@ -34,6 +34,7 @@ all:
                   ansible_host: 192.168.4.17
                 DC1_BORDER_LEAF2:
                   ansible_host: 192.168.4.18
+
         DC2:
           children:
             DC2_SPINES:
@@ -62,6 +63,7 @@ all:
                   ansible_host: 192.168.4.27
                 DC2_BORDER_LEAF2:
                   ansible_host: 192.168.4.28
+
       vars:
         ansible_connection: httpapi
         ansible_httpapi_use_ssl: true
