@@ -1,4 +1,4 @@
-! Startup-config last modified at Thu May 22 02:29:25 2025 by admin
+! Startup-config last modified at Thu May 22 03:11:56 2025 by admin
 ! device: DC1-LEAF1B (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
@@ -108,13 +108,18 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description Routed_Interface_E5_To_DC1-CLIENT2
-   mtu 9000
+   description Routed_Interface_E5_To_DC1-CLIENT2_Eth1
+   mtu 1460
    no switchport
-   vrf BLUE
-   ip address 10.192.195.21/24
+   vrf RED
+   ip address 10.192.195.55/24
 !
 interface Ethernet6
+   description Routed_Interface_E6_To_DC1-CLIENT2_Eth2
+   mtu 1450
+   no switchport
+   vrf BLUE
+   ip address 10.99.99.66/24
 !
 interface Loopback0
    description EVPN_Overlay_Peering

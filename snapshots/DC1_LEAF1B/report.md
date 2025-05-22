@@ -15,8 +15,8 @@ Et1                            up             up                 P2P_LINK_TO_DC1
 Et2                            up             up                 P2P_LINK_TO_DC1_SPINE2_Ethernet2
 Et3                            up             up                 MLAG_PEER_DC1_LEAF1A_Ethernet3
 Et4                            up             up                 MLAG_PEER_DC1_LEAF1A_Ethernet4
-Et5                            up             up                 Routed_Interface_E5_To_DC1-CLIENT2
-Et6                            up             up                 
+Et5                            up             up                 Routed_Interface_E5_To_DC1-CLIENT2_Eth1
+Et6                            up             up                 Routed_Interface_E6_To_DC1-CLIENT2_Eth2
 Lo0                            up             up                 EVPN_Overlay_Peering
 Lo1                            up             up                 VTEP_VXLAN_Tunnel_Source
 Lo110                          up             up                 RED_VTEP_DIAGNOSTICS
@@ -47,7 +47,8 @@ Interface       IP Address           Status     Protocol         MTU    Owner
 --------------- -------------------- ---------- ------------ ---------- -------
 Ethernet1       172.31.10.45/31      up         up              9214           
 Ethernet2       172.31.10.47/31      up         up              9214           
-Ethernet5       10.192.195.21/24     up         up              9000           
+Ethernet5       10.192.195.55/24     up         up              1460           
+Ethernet6       10.99.99.66/24       up         up              1450           
 Loopback0       10.255.10.14/32      up         up             65535           
 Loopback1       10.255.11.13/32      up         up             65535           
 Loopback110     10.255.110.14/32     up         up             65535           
@@ -71,11 +72,11 @@ Vlan4094        10.255.241.21/31     up         up              9214
 ## show lldp neighbors
 
 ```
-Last table change time   : 0:04:54 ago
-Number of table inserts  : 23
-Number of table deletes  : 1
+Last table change time   : 0:02:55 ago
+Number of table inserts  : 22
+Number of table deletes  : 0
 Number of table drops    : 0
-Number of table age-outs : 1
+Number of table age-outs : 0
 
 Port          Neighbor Device ID       Neighbor Port ID    TTL
 ---------- ------------------------ ---------------------- ---
@@ -83,24 +84,24 @@ Et1           DC1_SPINE1               Ethernet2           120
 Et2           DC1_SPINE2               Ethernet2           120
 Et3           DC1_LEAF1A               Ethernet3           120
 Et4           DC1_LEAF1A               Ethernet4           120
-Et5           dc1-client1              Ethernet2           120
+Et5           dc1-client2              Ethernet1           120
 Et6           dc1-client2              Ethernet2           120
 Ma0           dc1-client4              Management0         120
-Ma0           dc2-client1              Management0         120
-Ma0           dc2-client3              Management0         120
-Ma0           DC1_LEAF2B               Management0         120
-Ma0           dc2-client4              Management0         120
-Ma0           dc2-client2              Management0         120
-Ma0           DC2_BORDER_LEAF2         Management0         120
-Ma0           DC1_SPINE1               Management0         120
-Ma0           dc1-client1              Management0         120
-Ma0           dc1-client2              Management0         120
-Ma0           DC2_LEAF2A               Management0         120
-Ma0           DC1_SPINE2               Management0         120
-Ma0           dc1-client3              Management0         120
-Ma0           DC2_LEAF1A               Management0         120
+Ma0           DC1_LEAF1A               Management0         120
 Ma0           DC2_BORDER_LEAF1         Management0         120
+Ma0           dc1-client3              Management0         120
+Ma0           DC2_LEAF2B               Management0         120
 Ma0           DC2_LEAF1B               Management0         120
+Ma0           dc2-client4              Management0         120
+Ma0           dc1-client2              Management0         120
+Ma0           DC1_SPINE2               Management0         120
+Ma0           DC2_SPINE2               Management0         120
+Ma0           DC1_LEAF2A               Management0         120
+Ma0           DC1_BORDER_LEAF2         Management0         120
+Ma0           DC2_SPINE1               Management0         120
+Ma0           WAN                      Management0         120
+Ma0           DC1_LEAF2B               Management0         120
+Ma0           dc2-client1              Management0         120
 ```
 ## show running-config
 
@@ -215,13 +216,18 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description Routed_Interface_E5_To_DC1-CLIENT2
-   mtu 9000
+   description Routed_Interface_E5_To_DC1-CLIENT2_Eth1
+   mtu 1460
    no switchport
-   vrf BLUE
-   ip address 10.192.195.21/24
+   vrf RED
+   ip address 10.192.195.55/24
 !
 interface Ethernet6
+   description Routed_Interface_E6_To_DC1-CLIENT2_Eth2
+   mtu 1450
+   no switchport
+   vrf BLUE
+   ip address 10.99.99.66/24
 !
 interface Loopback0
    description EVPN_Overlay_Peering
@@ -478,9 +484,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: 40DEBAF1BA95AE5CBD1DE556DE5788FF
-Hardware MAC address: 001c.7329.bfa2
-System MAC address: 001c.7329.bfa2
+Serial number: B3BF7EDC03E366A6FC89BC5A9D7CE133
+Hardware MAC address: 001c.7305.2896
+System MAC address: 001c.7305.2896
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -491,7 +497,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 9 minutes
+Uptime: 12 minutes
 Total memory: 65343808 kB
-Free memory: 36504600 kB
+Free memory: 35176880 kB
 ```

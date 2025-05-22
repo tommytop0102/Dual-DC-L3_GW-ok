@@ -6,9 +6,19 @@ network_ports:
     switch_ports:
       - Ethernet5
     enabled: true
-    description: "Trunk to DC1-CLIENT1"
-    mtu: 9000
+    description: "Trunk to DC1-CLIENT1_Eth1"
+    mtu: 1470
     mode: trunk
     vlans: "110-112"
     profile: int_trunk_host
+
+  - switches:
+      - DC1_LEAF1A
+    switch_ports:
+      - Ethernet6
+    enabled: true
+    description: "Access to DC1-CLIENT1_Eth2"
+    mtu: 1500
+    vlans: "211"
+    profile: int_access_host
 

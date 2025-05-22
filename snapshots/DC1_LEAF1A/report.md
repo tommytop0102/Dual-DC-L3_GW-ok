@@ -15,8 +15,8 @@ Et1                            up             up                 P2P_LINK_TO_DC1
 Et2                            up             up                 P2P_LINK_TO_DC1_SPINE2_Ethernet1
 Et3                            up             up                 MLAG_PEER_DC1_LEAF1B_Ethernet3
 Et4                            up             up                 MLAG_PEER_DC1_LEAF1B_Ethernet4
-Et5                            down           down               Trunk to DC1-CLIENT1
-Et6                            up             up                 
+Et5                            down           down               Trunk to DC1-CLIENT1_Eth1
+Et6                            down           down               Access to DC1-CLIENT1_Eth2
 Lo0                            up             up                 EVPN_Overlay_Peering
 Lo1                            up             up                 VTEP_VXLAN_Tunnel_Source
 Lo110                          up             up                 RED_VTEP_DIAGNOSTICS
@@ -70,9 +70,9 @@ Vlan4094        10.255.241.20/31     up         up              9214
 ## show lldp neighbors
 
 ```
-Last table change time   : 0:04:55 ago
+Last table change time   : 0:02:50 ago
 Number of table inserts  : 22
-Number of table deletes  : 1
+Number of table deletes  : 2
 Number of table drops    : 0
 Number of table age-outs : 0
 
@@ -82,23 +82,22 @@ Et1           DC1_SPINE1               Ethernet1           120
 Et2           DC1_SPINE2               Ethernet1           120
 Et3           DC1_LEAF1B               Ethernet3           120
 Et4           DC1_LEAF1B               Ethernet4           120
-Et6           dc1-client2              Ethernet1           120
-Ma0           WAN                      Management0         120
-Ma0           DC2_SPINE2               Management0         120
 Ma0           DC2_LEAF1B               Management0         120
-Ma0           DC1_BORDER_LEAF2         Management0         120
-Ma0           DC2_SPINE1               Management0         120
-Ma0           dc2-client3              Management0         120
-Ma0           DC1_BORDER_LEAF1         Management0         120
-Ma0           dc2-client2              Management0         120
-Ma0           dc2-client1              Management0         120
-Ma0           DC1_LEAF1B               Management0         120
-Ma0           dc2-client4              Management0         120
+Ma0           DC2_BORDER_LEAF1         Management0         120
+Ma0           dc1-client3              Management0         120
 Ma0           dc1-client2              Management0         120
 Ma0           DC2_LEAF2B               Management0         120
-Ma0           DC2_LEAF2A               Management0         120
+Ma0           DC1_BORDER_LEAF2         Management0         120
+Ma0           DC2_SPINE2               Management0         120
+Ma0           dc2-client4              Management0         120
+Ma0           DC1_LEAF2A               Management0         120
+Ma0           DC1_SPINE2               Management0         120
+Ma0           dc1-client4              Management0         120
+Ma0           DC1_LEAF1B               Management0         120
+Ma0           DC2_SPINE1               Management0         120
+Ma0           WAN                      Management0         120
 Ma0           DC1_LEAF2B               Management0         120
-Ma0           DC1_SPINE1               Management0         120
+Ma0           dc2-client1              Management0         120
 ```
 ## show running-config
 
@@ -213,14 +212,19 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description Trunk to DC1-CLIENT1
-   mtu 9000
+   description Trunk to DC1-CLIENT1_Eth1
+   mtu 1470
    switchport trunk allowed vlan 110-112
    switchport mode trunk
    spanning-tree portfast
    spanning-tree bpduguard enable
 !
 interface Ethernet6
+   description Access to DC1-CLIENT1_Eth2
+   mtu 1500
+   switchport access vlan 211
+   spanning-tree portfast
+   spanning-tree bpduguard enable
 !
 interface Loopback0
    description EVPN_Overlay_Peering
@@ -477,9 +481,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: 6F0DF8C233A6F2A2B5D86DB3A53F1FD6
-Hardware MAC address: 001c.7319.667c
-System MAC address: 001c.7319.667c
+Serial number: 2A4F3D9EBE6B7CAFE3FC89ACDFFCB4D8
+Hardware MAC address: 001c.73dc.abce
+System MAC address: 001c.73dc.abce
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -490,7 +494,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 9 minutes
+Uptime: 13 minutes
 Total memory: 65343808 kB
-Free memory: 36493532 kB
+Free memory: 35212752 kB
 ```

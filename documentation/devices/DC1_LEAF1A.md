@@ -331,7 +331,8 @@ vlan 4094
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
 | Ethernet3 | MLAG_PEER_DC1_LEAF1B_Ethernet3 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 3 |
 | Ethernet4 | MLAG_PEER_DC1_LEAF1B_Ethernet4 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 3 |
-| Ethernet5 |  Trunk to DC1-CLIENT1 | trunk | 110-112 | - | - | - |
+| Ethernet5 |  Trunk to DC1-CLIENT1_Eth1 | trunk | 110-112 | - | - | - |
+| Ethernet6 |  Access to DC1-CLIENT1_Eth2 | access | 211 | - | - | - |
 
 *Inherited from Port-Channel Interface
 
@@ -371,11 +372,21 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description Trunk to DC1-CLIENT1
+   description Trunk to DC1-CLIENT1_Eth1
    no shutdown
-   mtu 9000
+   mtu 1470
    switchport trunk allowed vlan 110-112
    switchport mode trunk
+   switchport
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet6
+   description Access to DC1-CLIENT1_Eth2
+   no shutdown
+   mtu 1500
+   switchport access vlan 211
+   switchport mode access
    switchport
    spanning-tree portfast
    spanning-tree bpduguard enable

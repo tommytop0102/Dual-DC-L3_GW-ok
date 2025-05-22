@@ -340,7 +340,8 @@ vlan 4094
 | --------- | ----------- | -----| ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
 | Ethernet1 | P2P_LINK_TO_DC1_SPINE1_Ethernet2 | routed | - | 172.31.10.45/31 | default | 9214 | False | - | - |
 | Ethernet2 | P2P_LINK_TO_DC1_SPINE2_Ethernet2 | routed | - | 172.31.10.47/31 | default | 9214 | False | - | - |
-| Ethernet5 | Routed_Interface_E5_To_DC1-CLIENT2 | routed | - | 10.192.195.21/24 | BLUE | 9000 | False | - | - |
+| Ethernet5 | Routed_Interface_E5_To_DC1-CLIENT2_Eth1 | routed | - | 10.192.195.55/24 | RED | 1460 | False | - | - |
+| Ethernet6 | Routed_Interface_E6_To_DC1-CLIENT2_Eth2 | routed | - | 10.99.99.66/24 | BLUE | 1450 | False | - | - |
 
 #### Ethernet Interfaces Device Configuration
 
@@ -371,12 +372,20 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description Routed_Interface_E5_To_DC1-CLIENT2
+   description Routed_Interface_E5_To_DC1-CLIENT2_Eth1
    no shutdown
-   mtu 9000
+   mtu 1460
+   no switchport
+   vrf RED
+   ip address 10.192.195.55/24
+!
+interface Ethernet6
+   description Routed_Interface_E6_To_DC1-CLIENT2_Eth2
+   no shutdown
+   mtu 1450
    no switchport
    vrf BLUE
-   ip address 10.192.195.21/24
+   ip address 10.99.99.66/24
 ```
 
 ### Port-Channel Interfaces

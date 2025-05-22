@@ -399,15 +399,27 @@ ethernet_interfaces:
   type: routed
   ip_address: 172.31.10.43/31
 - name: Ethernet5
-  peer: Trunk to DC1-CLIENT1
+  peer: Trunk to DC1-CLIENT1_Eth1
   peer_type: network_port
   port_profile: int_trunk_host
-  description: Trunk to DC1-CLIENT1
+  description: Trunk to DC1-CLIENT1_Eth1
   shutdown: false
   type: switched
-  mtu: 9000
+  mtu: 1470
   mode: trunk
   vlans: 110-112
+  spanning_tree_portfast: edge
+  spanning_tree_bpduguard: enabled
+- name: Ethernet6
+  peer: Access to DC1-CLIENT1_Eth2
+  peer_type: network_port
+  port_profile: int_access_host
+  description: Access to DC1-CLIENT1_Eth2
+  shutdown: false
+  type: switched
+  mtu: 1500
+  mode: access
+  vlans: '211'
   spanning_tree_portfast: edge
   spanning_tree_bpduguard: enabled
 mlag_configuration:

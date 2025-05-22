@@ -331,6 +331,8 @@ vlan 4094
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
 | Ethernet3 | MLAG_PEER_DC2_LEAF1B_Ethernet3 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 3 |
 | Ethernet4 | MLAG_PEER_DC2_LEAF1B_Ethernet4 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 3 |
+| Ethernet5 | dc2-server01_Eth1 | *trunk | *120 | *- | *- | 5 |
+| Ethernet6 | dc2-server02_Eth1 | *trunk | *121 | *- | *- | 6 |
 
 *Inherited from Port-Channel Interface
 
@@ -368,6 +370,16 @@ interface Ethernet4
    description MLAG_PEER_DC2_LEAF1B_Ethernet4
    no shutdown
    channel-group 3 mode active
+!
+interface Ethernet5
+   description dc2-server01_Eth1
+   no shutdown
+   channel-group 5 mode active
+!
+interface Ethernet6
+   description dc2-server02_Eth1
+   no shutdown
+   channel-group 6 mode active
 ```
 
 ### Port-Channel Interfaces
@@ -379,6 +391,8 @@ interface Ethernet4
 | Interface | Description | Type | Mode | VLANs | Native VLAN | Trunk Group | LACP Fallback Timeout | LACP Fallback Mode | MLAG ID | EVPN ESI |
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
 | Port-Channel3 | MLAG_PEER_DC2_LEAF1B_Po3 | switched | trunk | - | - | ['LEAF_PEER_L3', 'MLAG'] | - | - | - | - |
+| Port-Channel5 | dc2-server01_PortChannel5 | switched | trunk | 120 | - | - | - | - | 5 | - |
+| Port-Channel6 | dc2-server02_PortChannel6 | switched | trunk | 121 | - | - | - | - | 6 | - |
 
 #### Port-Channel Interfaces Device Configuration
 
@@ -391,6 +405,24 @@ interface Port-Channel3
    switchport mode trunk
    switchport trunk group LEAF_PEER_L3
    switchport trunk group MLAG
+!
+interface Port-Channel5
+   description dc2-server01_PortChannel5
+   no shutdown
+   switchport
+   switchport trunk allowed vlan 120
+   switchport mode trunk
+   mlag 5
+   spanning-tree portfast
+!
+interface Port-Channel6
+   description dc2-server02_PortChannel6
+   no shutdown
+   switchport
+   switchport trunk allowed vlan 121
+   switchport mode trunk
+   mlag 6
+   spanning-tree portfast
 ```
 
 ### Loopback Interfaces
