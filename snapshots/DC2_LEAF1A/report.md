@@ -15,16 +15,14 @@ Et1                            up             up                 P2P_LINK_TO_DC2
 Et2                            up             up                 P2P_LINK_TO_DC2_SPINE2_Ethernet1
 Et3                            up             up                 MLAG_PEER_DC2_LEAF1B_Ethernet3
 Et4                            up             up                 MLAG_PEER_DC2_LEAF1B_Ethernet4
-Et5                            up             up                 dc2-server01_Eth1
-Et6                            up             up                 dc2-server02_Eth1
+Et5                            up             up                 
+Et6                            up             up                 
 Lo0                            up             up                 EVPN_Overlay_Peering
 Lo1                            up             up                 VTEP_VXLAN_Tunnel_Source
 Lo110                          up             up                 RED_VTEP_DIAGNOSTICS
 Lo210                          up             up                 BLUE_VTEP_DIAGNOSTICS
 Ma0                            up             up                 oob_management
 Po3                            up             up                 MLAG_PEER_DC2_LEAF1B_Po3
-Po5                            down           lowerlayerdown     dc2-server01_PortChannel5
-Po6                            down           lowerlayerdown     dc2-server02_PortChannel6
 Vl110                          up             up                 VRF_RED_VLAN_110
 Vl112                          up             up                 VRF_RED_VLAN_112
 Vl120                          up             up                 VRF_RED_VLAN_120
@@ -72,7 +70,7 @@ Vlan4094        10.255.251.40/31     up         up              9214
 ## show lldp neighbors
 
 ```
-Last table change time   : 0:09:10 ago
+Last table change time   : 0:04:56 ago
 Number of table inserts  : 22
 Number of table deletes  : 0
 Number of table drops    : 0
@@ -86,22 +84,22 @@ Et3           DC2_LEAF1B               Ethernet3           120
 Et4           DC2_LEAF1B               Ethernet4           120
 Et5           dc2-client1              Ethernet1           120
 Et6           dc2-client2              Ethernet1           120
-Ma0           dc1-client1              Management0         120
-Ma0           DC2_SPINE1               Management0         120
-Ma0           DC1_LEAF1A               Management0         120
 Ma0           DC2_BORDER_LEAF2         Management0         120
-Ma0           dc2-client2              Management0         120
-Ma0           dc2-client4              Management0         120
-Ma0           DC1_SPINE1               Management0         120
-Ma0           DC1_LEAF2A               Management0         120
+Ma0           dc1-client3              Management0         120
+Ma0           dc1-client1              Management0         120
 Ma0           dc1-client2              Management0         120
-Ma0           WAN                      Management0         120
+Ma0           DC2_LEAF2A               Management0         120
+Ma0           dc1-client4              Management0         120
+Ma0           dc2-client4              Management0         120
 Ma0           dc2-client1              Management0         120
 Ma0           dc2-client3              Management0         120
-Ma0           DC2_LEAF1B               Management0         120
-Ma0           DC2_LEAF2A               Management0         120
+Ma0           DC1_SPINE1               Management0         120
+Ma0           DC1_LEAF1B               Management0         120
 Ma0           DC1_LEAF2B               Management0         120
-Ma0           DC1_BORDER_LEAF1         Management0         120
+Ma0           dc2-client2              Management0         120
+Ma0           DC1_SPINE2               Management0         120
+Ma0           DC2_BORDER_LEAF1         Management0         120
+Ma0           DC2_LEAF1B               Management0         120
 ```
 ## show running-config
 
@@ -195,20 +193,6 @@ interface Port-Channel3
    switchport trunk group LEAF_PEER_L3
    switchport trunk group MLAG
 !
-interface Port-Channel5
-   description dc2-server01_PortChannel5
-   switchport trunk allowed vlan 120
-   switchport mode trunk
-   mlag 5
-   spanning-tree portfast
-!
-interface Port-Channel6
-   description dc2-server02_PortChannel6
-   switchport trunk allowed vlan 121
-   switchport mode trunk
-   mlag 6
-   spanning-tree portfast
-!
 interface Ethernet1
    description P2P_LINK_TO_DC2_SPINE1_Ethernet1
    mtu 9214
@@ -230,12 +214,8 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description dc2-server01_Eth1
-   channel-group 5 mode active
 !
 interface Ethernet6
-   description dc2-server02_Eth1
-   channel-group 6 mode active
 !
 interface Loopback0
    description EVPN_Overlay_Peering
@@ -492,9 +472,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: ACA338A2970A2533FF1FDB88294FEBA6
-Hardware MAC address: 001c.7362.8329
-System MAC address: 001c.7362.8329
+Serial number: 1862F7289F43D7C09B4501085BB1921E
+Hardware MAC address: 001c.738c.1e26
+System MAC address: 001c.738c.1e26
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -505,7 +485,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 12 minutes
-Total memory: 65343812 kB
-Free memory: 35864744 kB
+Uptime: 9 minutes
+Total memory: 65343808 kB
+Free memory: 36521668 kB
 ```

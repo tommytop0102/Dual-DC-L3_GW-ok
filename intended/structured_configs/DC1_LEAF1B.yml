@@ -359,22 +359,6 @@ port_channel_interfaces:
   trunk_groups:
   - LEAF_PEER_L3
   - MLAG
-- name: Port-Channel5
-  description: dc1-server01_PortChannel5
-  type: switched
-  shutdown: false
-  mode: trunk
-  vlans: '110'
-  spanning_tree_portfast: edge
-  mlag: 5
-- name: Port-Channel6
-  description: dc1-server02_PortChannel6
-  type: switched
-  shutdown: false
-  mode: trunk
-  vlans: '111'
-  spanning_tree_portfast: edge
-  mlag: 6
 ethernet_interfaces:
 - name: Ethernet3
   peer: DC1_LEAF1A
@@ -415,25 +399,14 @@ ethernet_interfaces:
   type: routed
   ip_address: 172.31.10.47/31
 - name: Ethernet5
-  peer: dc1-server01
-  peer_interface: Eth2
-  peer_type: server
-  description: dc1-server01_Eth2
+  peer_type: network_port
+  port_profile: int_routed_host
   shutdown: false
-  type: port-channel-member
-  channel_group:
-    id: 5
-    mode: active
-- name: Ethernet6
-  peer: dc1-server02
-  peer_interface: Eth2
-  peer_type: server
-  description: dc1-server02_Eth2
-  shutdown: false
-  type: port-channel-member
-  channel_group:
-    id: 6
-    mode: active
+  type: routed
+  mtu: 9000
+  ip_address: 10.192.195.21/24
+  vrf: BLUE
+  description: Routed_Interface_E5_To_DC1-CLIENT2
 mlag_configuration:
   domain_id: DC1_LEAF1
   local_interface: Vlan4094

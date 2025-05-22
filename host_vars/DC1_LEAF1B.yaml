@@ -1,0 +1,15 @@
+---
+
+
+network_ports:
+  - switches:
+      - DC1_LEAF1B
+    switch_ports:
+      - Ethernet5
+    enabled: true
+    mtu: 9000
+    profile: int_routed_host
+    structured_config:
+      ip_address: 10.192.195.21/24
+      vrf: BLUE
+      description: Routed_Interface_E5_To_DC1-CLIENT2

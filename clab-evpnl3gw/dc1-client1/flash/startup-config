@@ -1,10 +1,10 @@
-! Startup-config last modified at Wed May 21 09:22:18 2025 by root
+! Startup-config last modified at Thu May 22 02:26:18 2025 by root
 ! device: dc1-client1 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
 aaa authentication policy local allow-nopassword-remote-login
 !
-username admin privilege 15 role network-admin secret sha512 $6$0oggTOwR.KhsFACU$ypUqkXqQoPzB0rZ6dIcPaadOLPq7Wv4KeCtI5EyDjkLhCEHnX752hkTAfb9muLF6OGQ9MY4R/.DVvclQ3.iOC0
+username admin privilege 15 role network-admin secret sha512 $6$NgEJFh.VQuB4N5Zv$.72qRklO0dGaybXl3QjqCSBCkmGzj37pxQkDBlITPMl94f/.P71UqCHoXp2kDDNlpXxr8IJ6SsKr8SSUK2voz0
 username coder privilege 15 nopassword
 !
 management api http-commands

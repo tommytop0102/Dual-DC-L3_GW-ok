@@ -331,8 +331,7 @@ vlan 4094
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
 | Ethernet3 | MLAG_PEER_DC1_LEAF1B_Ethernet3 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 3 |
 | Ethernet4 | MLAG_PEER_DC1_LEAF1B_Ethernet4 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 3 |
-| Ethernet5 | dc1-server01_Eth1 | *trunk | *110 | *- | *- | 5 |
-| Ethernet6 | dc1-server02_Eth1 | *trunk | *111 | *- | *- | 6 |
+| Ethernet5 |  Trunk to DC1-CLIENT1 | trunk | 110-112 | - | - | - |
 
 *Inherited from Port-Channel Interface
 
@@ -372,14 +371,14 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description dc1-server01_Eth1
+   description Trunk to DC1-CLIENT1
    no shutdown
-   channel-group 5 mode active
-!
-interface Ethernet6
-   description dc1-server02_Eth1
-   no shutdown
-   channel-group 6 mode active
+   mtu 9000
+   switchport trunk allowed vlan 110-112
+   switchport mode trunk
+   switchport
+   spanning-tree portfast
+   spanning-tree bpduguard enable
 ```
 
 ### Port-Channel Interfaces
@@ -391,8 +390,6 @@ interface Ethernet6
 | Interface | Description | Type | Mode | VLANs | Native VLAN | Trunk Group | LACP Fallback Timeout | LACP Fallback Mode | MLAG ID | EVPN ESI |
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
 | Port-Channel3 | MLAG_PEER_DC1_LEAF1B_Po3 | switched | trunk | - | - | ['LEAF_PEER_L3', 'MLAG'] | - | - | - | - |
-| Port-Channel5 | dc1-server01_PortChannel5 | switched | trunk | 110 | - | - | - | - | 5 | - |
-| Port-Channel6 | dc1-server02_PortChannel6 | switched | trunk | 111 | - | - | - | - | 6 | - |
 
 #### Port-Channel Interfaces Device Configuration
 
@@ -405,24 +402,6 @@ interface Port-Channel3
    switchport mode trunk
    switchport trunk group LEAF_PEER_L3
    switchport trunk group MLAG
-!
-interface Port-Channel5
-   description dc1-server01_PortChannel5
-   no shutdown
-   switchport
-   switchport trunk allowed vlan 110
-   switchport mode trunk
-   mlag 5
-   spanning-tree portfast
-!
-interface Port-Channel6
-   description dc1-server02_PortChannel6
-   no shutdown
-   switchport
-   switchport trunk allowed vlan 111
-   switchport mode trunk
-   mlag 6
-   spanning-tree portfast
 ```
 
 ### Loopback Interfaces

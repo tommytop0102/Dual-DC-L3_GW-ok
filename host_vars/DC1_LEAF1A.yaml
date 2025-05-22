@@ -1,0 +1,14 @@
+---
+
+network_ports:
+  - switches:
+      - DC1_LEAF1A
+    switch_ports:
+      - Ethernet5
+    enabled: true
+    description: "Trunk to DC1-CLIENT1"
+    mtu: 9000
+    mode: trunk
+    vlans: "110-112"
+    profile: int_trunk_host
+

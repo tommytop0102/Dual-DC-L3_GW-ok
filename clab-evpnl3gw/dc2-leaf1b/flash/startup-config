@@ -1,4 +1,4 @@
-! Startup-config last modified at Wed May 21 09:30:32 2025 by admin
+! Startup-config last modified at Thu May 22 02:27:55 2025 by admin
 ! device: DC2-LEAF1B (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
@@ -87,20 +87,6 @@ interface Port-Channel3
    switchport trunk group LEAF_PEER_L3
    switchport trunk group MLAG
 !
-interface Port-Channel5
-   description dc2-server01_PortChannel5
-   switchport trunk allowed vlan 120
-   switchport mode trunk
-   mlag 5
-   spanning-tree portfast
-!
-interface Port-Channel6
-   description dc2-server02_PortChannel6
-   switchport trunk allowed vlan 121
-   switchport mode trunk
-   mlag 6
-   spanning-tree portfast
-!
 interface Ethernet1
    description P2P_LINK_TO_DC2_SPINE1_Ethernet2
    mtu 9214
@@ -122,12 +108,8 @@ interface Ethernet4
    channel-group 3 mode active
 !
 interface Ethernet5
-   description dc2-server01_Eth2
-   channel-group 5 mode active
 !
 interface Ethernet6
-   description dc2-server02_Eth2
-   channel-group 6 mode active
 !
 interface Loopback0
    description EVPN_Overlay_Peering

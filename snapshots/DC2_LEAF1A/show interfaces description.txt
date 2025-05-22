@@ -3,16 +3,14 @@ Et1                            up             up                 P2P_LINK_TO_DC2
 Et2                            up             up                 P2P_LINK_TO_DC2_SPINE2_Ethernet1
 Et3                            up             up                 MLAG_PEER_DC2_LEAF1B_Ethernet3
 Et4                            up             up                 MLAG_PEER_DC2_LEAF1B_Ethernet4
-Et5                            up             up                 dc2-server01_Eth1
-Et6                            up             up                 dc2-server02_Eth1
+Et5                            up             up                 
+Et6                            up             up                 
 Lo0                            up             up                 EVPN_Overlay_Peering
 Lo1                            up             up                 VTEP_VXLAN_Tunnel_Source
 Lo110                          up             up                 RED_VTEP_DIAGNOSTICS
 Lo210                          up             up                 BLUE_VTEP_DIAGNOSTICS
 Ma0                            up             up                 oob_management
 Po3                            up             up                 MLAG_PEER_DC2_LEAF1B_Po3
-Po5                            down           lowerlayerdown     dc2-server01_PortChannel5
-Po6                            down           lowerlayerdown     dc2-server02_PortChannel6
 Vl110                          up             up                 VRF_RED_VLAN_110
 Vl112                          up             up                 VRF_RED_VLAN_112
 Vl120                          up             up                 VRF_RED_VLAN_120
