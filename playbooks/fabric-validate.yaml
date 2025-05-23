@@ -19,8 +19,8 @@
     #   import_role:
     #     name: arista.avd.eos_config_deploy_eapi
 
-    # - name: Validate states on EOS devices
-    #   tags: [verify, never]
-    #   import_role:
-    #     name: arista.avd.eos_validate_state
+    - name: Validate states on EOS devices
+      tags: [verify, never]
+      import_role:
+        name: arista.avd.eos_validate_state
 

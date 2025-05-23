@@ -1,4 +1,4 @@
-! Startup-config last modified at Thu May 22 07:13:29 2025 by admin
+! Startup-config last modified at Fri May 23 05:58:47 2025 by admin
 ! device: DC1-LEAF1A (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
@@ -290,9 +290,6 @@ router bgp 65101
       no neighbor EVPN-OVERLAY-PEERS activate
       neighbor IPv4-UNDERLAY-PEERS activate
       neighbor MLAG-IPv4-UNDERLAY-PEER activate
-   !
-   address-family rt-membership
-      neighbor EVPN-OVERLAY-PEERS activate
    !
    vrf BLUE
       rd 10.255.10.13:220

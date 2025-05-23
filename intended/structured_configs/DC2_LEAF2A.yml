@@ -73,10 +73,6 @@ router_bgp:
     peer_groups:
     - name: EVPN-OVERLAY-PEERS
       activate: true
-  address_family_rtc:
-    peer_groups:
-    - name: EVPN-OVERLAY-PEERS
-      activate: true
   vrfs:
   - name: BLUE
     router_id: 10.255.20.25

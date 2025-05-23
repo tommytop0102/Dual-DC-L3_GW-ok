@@ -64,7 +64,7 @@ Vlan4094        10.255.251.44/31     up         up              9214
 ## show lldp neighbors
 
 ```
-Last table change time   : 0:06:10 ago
+Last table change time   : 1:46:36 ago
 Number of table inserts  : 22
 Number of table deletes  : 0
 Number of table drops    : 0
@@ -78,22 +78,22 @@ Et3           DC2_LEAF2B               Ethernet3           120
 Et4           DC2_LEAF2B               Ethernet4           120
 Et5           dc2-client3              Ethernet1           120
 Et6           dc2-client4              Ethernet1           120
-Ma0           DC1_SPINE1               Management0         120
-Ma0           DC2_LEAF1B               Management0         120
-Ma0           DC1_LEAF2B               Management0         120
-Ma0           DC1_SPINE2               Management0         120
-Ma0           dc2-client2              Management0         120
-Ma0           DC2_SPINE2               Management0         120
-Ma0           DC2_LEAF2B               Management0         120
-Ma0           DC1_LEAF1A               Management0         120
-Ma0           DC2_SPINE1               Management0         120
-Ma0           dc1-client2              Management0         120
-Ma0           dc2-client1              Management0         120
-Ma0           DC1_LEAF2A               Management0         120
+Ma0           DC2_BORDER_LEAF1         Management0         120
 Ma0           DC1_LEAF1B               Management0         120
-Ma0           DC1_BORDER_LEAF1         Management0         120
-Ma0           dc2-client3              Management0         120
+Ma0           DC2_LEAF1B               Management0         120
+Ma0           DC2_SPINE1               Management0         120
+Ma0           DC1_LEAF2B               Management0         120
+Ma0           dc2-client4              Management0         120
+Ma0           WAN                      Management0         120
+Ma0           DC1_LEAF2A               Management0         120
+Ma0           DC1_SPINE2               Management0         120
+Ma0           DC1_LEAF1A               Management0         120
+Ma0           DC2_LEAF1A               Management0         120
+Ma0           dc1-client2              Management0         120
+Ma0           DC1_SPINE1               Management0         120
 Ma0           dc1-client4              Management0         120
+Ma0           dc1-client1              Management0         120
+Ma0           dc1-client3              Management0         120
 ```
 ## show running-config
 
@@ -401,9 +401,6 @@ router bgp 65202
       neighbor IPv4-UNDERLAY-PEERS activate
       neighbor MLAG-IPv4-UNDERLAY-PEER activate
    !
-   address-family rt-membership
-      neighbor EVPN-OVERLAY-PEERS activate
-   !
    vrf BLUE
       rd 10.255.20.25:220
       route-target import evpn 220:220
@@ -434,9 +431,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: 26953AFC04D9246C18CA1C886734D5D5
-Hardware MAC address: 001c.7383.540e
-System MAC address: 001c.7383.540e
+Serial number: BDCA5D22DCB7B1E97E400892EB380A66
+Hardware MAC address: 001c.7377.c0e8
+System MAC address: 001c.7377.c0e8
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -447,7 +444,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 59 minutes
+Uptime: 2 hours and 4 minutes
 Total memory: 65343820 kB
-Free memory: 36252788 kB
+Free memory: 36355020 kB
 ```

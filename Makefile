@@ -26,10 +26,10 @@ snapshot: ## Snapshot AVD cEOS-Lab Status
 	@echo -e "\n############### \e[1;30;42mSnapshot switch status\e[0m ###############\n"
 	@ansible-playbook playbooks/fabric-snapshot.yaml --flush-cache
 
-# .PHONY: validate
-# validate: ## Validate AVD cEOS-Lab Status
-# 	@echo -e "\n############### \e[1;30;42mValidateswitch status\e[0m ###############\n"
-# 	@ansible-playbook playbooks/fabric-validate.yaml
+.PHONY: validate
+validate: ## Validate AVD cEOS-Lab Status
+	@echo -e "\n############### \e[1;30;42mValidateswitch status\e[0m ###############\n"
+	@ansible-playbook playbooks/fabric-validate.yaml
 
 .PHONY: destroy
 destroy: ## Delete cEOS-Lab Deployment and AVD generated config and documentation

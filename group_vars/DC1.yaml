@@ -1,7 +1,7 @@
 ---
 dc_name: DC1
 
-evpn_overlay_bgp_rtc: true
+
 
 spine:
   defaults:

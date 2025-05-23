@@ -1,4 +1,4 @@
-! Startup-config last modified at Thu May 22 07:13:23 2025 by admin
+! Startup-config last modified at Fri May 23 05:58:40 2025 by admin
 ! device: DC2-SPINE1 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
@@ -155,10 +155,6 @@ router bgp 65200
    address-family ipv4
       no neighbor EVPN-OVERLAY-PEERS activate
       neighbor IPv4-UNDERLAY-PEERS activate
-   !
-   address-family rt-membership
-      neighbor EVPN-OVERLAY-PEERS activate
-      neighbor EVPN-OVERLAY-PEERS default-route-target only
 !
 router multicast
    ipv4

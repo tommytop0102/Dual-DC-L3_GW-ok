@@ -62,7 +62,7 @@ Vlan4094        10.255.251.48/31     up         up              9214
 ## show lldp neighbors
 
 ```
-Last table change time   : 0:37:14 ago
+Last table change time   : 1:46:33 ago
 Number of table inserts  : 21
 Number of table deletes  : 0
 Number of table drops    : 0
@@ -75,22 +75,22 @@ Et2           DC2_SPINE2               Ethernet5           120
 Et3           DC2_BORDER_LEAF2         Ethernet3           120
 Et4           DC2_BORDER_LEAF2         Ethernet4           120
 Et5           WAN                      Ethernet3           120
-Ma0           DC2_LEAF1A               Management0         120
-Ma0           DC1_LEAF2B               Management0         120
-Ma0           DC2_SPINE2               Management0         120
-Ma0           dc1-client3              Management0         120
-Ma0           DC1_SPINE1               Management0         120
-Ma0           DC1_SPINE2               Management0         120
-Ma0           dc2-client2              Management0         120
-Ma0           DC2_BORDER_LEAF2         Management0         120
-Ma0           DC2_LEAF1B               Management0         120
-Ma0           DC2_LEAF2B               Management0         120
 Ma0           DC2_LEAF2A               Management0         120
-Ma0           DC1_BORDER_LEAF2         Management0         120
+Ma0           DC1_LEAF1B               Management0         120
+Ma0           DC2_LEAF1B               Management0         120
+Ma0           DC2_SPINE1               Management0         120
+Ma0           DC1_LEAF2B               Management0         120
 Ma0           dc2-client4              Management0         120
-Ma0           dc1-client1              Management0         120
-Ma0           dc1-client2              Management0         120
+Ma0           WAN                      Management0         120
 Ma0           DC1_LEAF2A               Management0         120
+Ma0           DC1_SPINE2               Management0         120
+Ma0           DC1_LEAF1A               Management0         120
+Ma0           DC2_LEAF1A               Management0         120
+Ma0           dc1-client2              Management0         120
+Ma0           DC1_SPINE1               Management0         120
+Ma0           dc1-client4              Management0         120
+Ma0           dc1-client1              Management0         120
+Ma0           DC2_BORDER_LEAF2         Management0         120
 ```
 ## show running-config
 
@@ -448,9 +448,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: 76CDC752E5D5CEC38217496C82DB1AF4
-Hardware MAC address: 001c.7368.e495
-System MAC address: 001c.7368.e495
+Serial number: E189CD2714FBB627FDCEE296343B4A52
+Hardware MAC address: 001c.73b2.6416
+System MAC address: 001c.73b2.6416
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -461,7 +461,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 59 minutes
+Uptime: 2 hours and 4 minutes
 Total memory: 65343820 kB
-Free memory: 36426352 kB
+Free memory: 36343360 kB
 ```
