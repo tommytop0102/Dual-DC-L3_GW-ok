@@ -11,7 +11,7 @@ Lo110                          up             up                 RED_VTEP_DIAGNO
 Lo220                          up             up                 BLUE_VTEP_DIAGNOSTICS
 Ma0                            up             up                 oob_management
 Po3                            up             up                 MLAG_PEER_DC2_LEAF1A_Po3
-Po5                            up             up                 dc2-server01_PortChannel5
+Po5                            down           lowerlayerdown     dc2-server01_PortChannel5
 Po6                            down           lowerlayerdown     dc2-server02_PortChannel6
 Vl111                          up             up                 VRF_RED_VLAN_111
 Vl112                          up             up                 VRF_RED_VLAN_112

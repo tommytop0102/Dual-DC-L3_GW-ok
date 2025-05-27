@@ -1,10 +1,10 @@
-! Startup-config last modified at Fri May 23 05:55:36 2025 by root
+! Startup-config last modified at Tue May 27 05:27:15 2025 by root
 ! device: dc2-client3 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
 aaa authentication policy local allow-nopassword-remote-login
 !
-username admin privilege 15 role network-admin secret sha512 $6$dKvtMYHdvzXSxa0.$SlvzKErGwgHijvfwmMHCz5kjMZQLdgEThInqsjwYPTm5WAJwA2jFsbz35ZLzABJQ/ewXifiREUTs2uzWZPouz1
+username admin privilege 15 role network-admin secret sha512 $6$qlJ6NzYXE9IYdm0U$pM6tL04wwz/1lHsClArarUhMj/c9uLyppQMgVOCVBPUKudHqwBYjcpp06Q.5KYKacb480Y9pGu.rlT2.uQ2ro1
 username coder privilege 15 nopassword
 !
 management api http-commands
@@ -44,5 +44,12 @@ no ip routing
 no ip routing vrf MGMT
 !
 ip route vrf MGMT 0.0.0.0/0 192.168.4.1
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
 !
 end

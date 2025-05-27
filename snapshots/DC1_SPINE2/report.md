@@ -38,7 +38,7 @@ Management0     192.168.4.12/24     up         up               1500
 ## show lldp neighbors
 
 ```
-Last table change time   : 1:46:35 ago
+Last table change time   : 0:00:14 ago
 Number of table inserts  : 22
 Number of table deletes  : 0
 Number of table drops    : 0
@@ -52,22 +52,22 @@ Et3           DC1_LEAF2A               Ethernet2           120
 Et4           DC1_LEAF2B               Ethernet2           120
 Et5           DC1_BORDER_LEAF1         Ethernet2           120
 Et6           DC1_BORDER_LEAF2         Ethernet2           120
-Ma0           WAN                      Management0         120
-Ma0           DC1_LEAF2B               Management0         120
-Ma0           DC1_LEAF1B               Management0         120
-Ma0           DC2_BORDER_LEAF1         Management0         120
-Ma0           DC2_LEAF1B               Management0         120
-Ma0           DC2_LEAF2A               Management0         120
-Ma0           DC2_SPINE1               Management0         120
-Ma0           dc2-client4              Management0         120
 Ma0           DC1_LEAF2A               Management0         120
-Ma0           DC1_LEAF1A               Management0         120
-Ma0           DC2_LEAF1A               Management0         120
-Ma0           dc1-client2              Management0         120
+Ma0           DC1_BORDER_LEAF2         Management0         120
 Ma0           DC1_SPINE1               Management0         120
-Ma0           dc1-client4              Management0         120
-Ma0           dc1-client1              Management0         120
+Ma0           DC2_LEAF1B               Management0         120
+Ma0           dc2-client2              Management0         120
+Ma0           DC2_LEAF2A               Management0         120
+Ma0           dc1-client2              Management0         120
+Ma0           DC1_LEAF1B               Management0         120
+Ma0           DC1_BORDER_LEAF1         Management0         120
 Ma0           DC2_BORDER_LEAF2         Management0         120
+Ma0           dc2-client4              Management0         120
+Ma0           dc2-client1              Management0         120
+Ma0           WAN                      Management0         120
+Ma0           dc1-client4              Management0         120
+Ma0           DC1_LEAF2B               Management0         120
+Ma0           dc1-client1              Management0         120
 ```
 ## show running-config
 
@@ -244,9 +244,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: DD54847E4A1077F15366998D2AE165F2
-Hardware MAC address: 001c.73d0.8c29
-System MAC address: 001c.73d0.8c29
+Serial number: EBD1097292158796A4613C8B1B0C5B9B
+Hardware MAC address: 001c.73b0.6c87
+System MAC address: 001c.73b0.6c87
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -257,7 +257,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 2 hours and 4 minutes
+Uptime: 3 minutes
 Total memory: 65343820 kB
-Free memory: 36361176 kB
+Free memory: 37126476 kB
 ```

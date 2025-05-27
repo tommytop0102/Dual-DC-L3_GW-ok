@@ -1,8 +1,8 @@
 Arista cEOSLab
 Hardware version: 
-Serial number: DD54847E4A1077F15366998D2AE165F2
-Hardware MAC address: 001c.73d0.8c29
-System MAC address: 001c.73d0.8c29
+Serial number: EBD1097292158796A4613C8B1B0C5B9B
+Hardware MAC address: 001c.73b0.6c87
+System MAC address: 001c.73b0.6c87
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -13,6 +13,6 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 2 hours and 4 minutes
+Uptime: 3 minutes
 Total memory: 65343820 kB
-Free memory: 36361176 kB
+Free memory: 37126476 kB

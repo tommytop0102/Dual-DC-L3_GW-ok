@@ -1,4 +1,4 @@
-! Startup-config last modified at Fri May 23 05:58:47 2025 by admin
+! Startup-config last modified at Tue May 27 05:28:43 2025 by admin
 ! device: DC1-LEAF1A (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root
@@ -293,7 +293,9 @@ router bgp 65101
    !
    vrf BLUE
       rd 10.255.10.13:220
+      route-target import evpn 110:110
       route-target import evpn 220:220
+      route-target export evpn 110:110
       route-target export evpn 220:220
       router-id 10.255.10.13
       neighbor 10.255.242.21 peer group MLAG-IPv4-UNDERLAY-PEER
@@ -302,7 +304,9 @@ router bgp 65101
    vrf RED
       rd 10.255.10.13:110
       route-target import evpn 110:110
+      route-target import evpn 220:220
       route-target export evpn 110:110
+      route-target export evpn 220:220
       router-id 10.255.10.13
       neighbor 10.255.242.21 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected

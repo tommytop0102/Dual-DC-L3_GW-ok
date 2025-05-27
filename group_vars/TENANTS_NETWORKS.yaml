@@ -1,7 +1,30 @@
 ---
+# custom_structured_configuration_route_maps:
+#   RM-EXT-NETWORKS-IN:
+#     sequence_numbers:
+#       10:
+#         type: permit
+#         match:
+#           - "ip address prefix-list PL-EXT-NETWORKS-IN"
+
+# custom_structured_configuration_prefix_lists:
+#   PL-EXT-NETWORKS-IN:
+#     sequence_numbers:
+#       10:
+#         action: "permit 0.0.0.0/0"
+
+# custom_structured_configuration_ip_extcommunity_lists:
+#   IX-LEAKING:
+#     - type: permit
+#       extcommunities: "rt 222:222"
+
+
+
 tenants:
   # Tenant A VRFs / VLANs
   - name: Tenant_A
+
+
     # enable_mlag_ibgp_peering_vrfs: false
     mac_vrf_vni_base: 10000
     vrfs:
@@ -23,7 +46,13 @@ tenants:
             #   - dc1_pod2
             enabled: true
             ip_address_virtual: 10.1.12.1/24
-
+        additional_route_targets:
+          - type: "export"
+            address_family: "evpn"
+            route_target: "220:220"
+          - type: "import"
+            address_family: "evpn"
+            route_target: "220:220"
 
 
       - name: BLUE
@@ -44,6 +73,13 @@ tenants:
             #   - dc1_pod2
             enabled: true
             ip_address_virtual: 10.2.14.1/24
+        additional_route_targets:
+          - type: "export"
+            address_family: "evpn"
+            route_target: "110:110"
+          - type: "import"
+            address_family: "evpn"
+            route_target: "110:110"
     l2vlans:
       - id: 120
         vni_override: 55120

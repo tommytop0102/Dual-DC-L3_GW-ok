@@ -119,10 +119,12 @@ router_bgp:
       - address_family: evpn
         route_targets:
         - 220:220
+        - 110:110
       export:
       - address_family: evpn
         route_targets:
         - 220:220
+        - 110:110
     redistribute_routes:
     - source_protocol: connected
     neighbors:
@@ -136,10 +138,12 @@ router_bgp:
       - address_family: evpn
         route_targets:
         - 110:110
+        - 220:220
       export:
       - address_family: evpn
         route_targets:
         - 110:110
+        - 220:220
     redistribute_routes:
     - source_protocol: connected
     neighbors:

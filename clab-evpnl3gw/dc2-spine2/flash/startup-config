@@ -1,4 +1,4 @@
-! Startup-config last modified at Fri May 23 05:58:41 2025 by admin
+! Startup-config last modified at Tue May 27 05:28:37 2025 by admin
 ! device: DC2-SPINE2 (cEOSLab, EOS-4.32.5M-41241764.4325M (engineering build))
 !
 no aaa root

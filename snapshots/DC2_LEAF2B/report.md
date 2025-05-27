@@ -23,7 +23,7 @@ Lo110                          up             up                 RED_VTEP_DIAGNO
 Lo220                          up             up                 BLUE_VTEP_DIAGNOSTICS
 Ma0                            up             up                 oob_management
 Po3                            up             up                 MLAG_PEER_DC2_LEAF2A_Po3
-Po5                            up             up                 dc2-server03_PortChannel5
+Po5                            down           lowerlayerdown     dc2-server03_PortChannel5
 Po6                            down           lowerlayerdown     dc2-server04_PortChannel6
 Vl111                          up             up                 VRF_RED_VLAN_111
 Vl112                          up             up                 VRF_RED_VLAN_112
@@ -64,7 +64,7 @@ Vlan4094        10.255.251.45/31     up         up              9214
 ## show lldp neighbors
 
 ```
-Last table change time   : 1:46:36 ago
+Last table change time   : 0:00:15 ago
 Number of table inserts  : 22
 Number of table deletes  : 0
 Number of table drops    : 0
@@ -79,21 +79,21 @@ Et4           DC2_LEAF2A               Ethernet4           120
 Et5           dc2-client3              Ethernet2           120
 Et6           dc2-client4              Ethernet2           120
 Ma0           dc1-client3              Management0         120
-Ma0           DC1_SPINE2               Management0         120
-Ma0           DC1_LEAF1A               Management0         120
 Ma0           DC1_LEAF2A               Management0         120
+Ma0           DC1_BORDER_LEAF2         Management0         120
 Ma0           DC1_SPINE1               Management0         120
-Ma0           dc1-client1              Management0         120
-Ma0           DC1_LEAF1B               Management0         120
-Ma0           DC2_BORDER_LEAF1         Management0         120
 Ma0           DC2_LEAF1B               Management0         120
+Ma0           dc2-client2              Management0         120
 Ma0           DC2_LEAF2A               Management0         120
-Ma0           DC1_LEAF2B               Management0         120
-Ma0           DC2_SPINE1               Management0         120
-Ma0           WAN                      Management0         120
 Ma0           dc1-client2              Management0         120
+Ma0           DC1_BORDER_LEAF1         Management0         120
+Ma0           DC1_LEAF1B               Management0         120
+Ma0           DC2_BORDER_LEAF2         Management0         120
 Ma0           dc2-client4              Management0         120
-Ma0           DC2_LEAF1A               Management0         120
+Ma0           dc2-client1              Management0         120
+Ma0           WAN                      Management0         120
+Ma0           dc1-client4              Management0         120
+Ma0           DC1_LEAF2B               Management0         120
 ```
 ## show running-config
 
@@ -403,7 +403,9 @@ router bgp 65202
    !
    vrf BLUE
       rd 10.255.20.26:220
+      route-target import evpn 110:110
       route-target import evpn 220:220
+      route-target export evpn 110:110
       route-target export evpn 220:220
       router-id 10.255.20.26
       neighbor 10.255.252.44 peer group MLAG-IPv4-UNDERLAY-PEER
@@ -412,7 +414,9 @@ router bgp 65202
    vrf RED
       rd 10.255.20.26:110
       route-target import evpn 110:110
+      route-target import evpn 220:220
       route-target export evpn 110:110
+      route-target export evpn 220:220
       router-id 10.255.20.26
       neighbor 10.255.252.44 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected
@@ -431,9 +435,9 @@ end
 ```
 Arista cEOSLab
 Hardware version: 
-Serial number: DA230B803DB30080B17F4E704B68F8AB
-Hardware MAC address: 001c.7392.ae97
-System MAC address: 001c.7392.ae97
+Serial number: C6B63183E6256A071B8764EF9A5F96D1
+Hardware MAC address: 001c.73b4.7caa
+System MAC address: 001c.73b4.7caa
 
 Software image version: 4.32.5M-41241764.4325M (engineering build)
 Architecture: i686
@@ -444,7 +448,7 @@ Image optimization: None
 
 Kernel version: 6.8.0-59-generic
 
-Uptime: 2 hours and 4 minutes
+Uptime: 3 minutes
 Total memory: 65343820 kB
-Free memory: 36355020 kB
+Free memory: 37179180 kB
 ```

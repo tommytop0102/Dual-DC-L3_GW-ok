@@ -807,7 +807,9 @@ router bgp 65101
    vrf BLUE
       rd 10.255.10.13:220
       route-target import evpn 220:220
+      route-target import evpn 110:110
       route-target export evpn 220:220
+      route-target export evpn 110:110
       router-id 10.255.10.13
       neighbor 10.255.242.21 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected
@@ -815,7 +817,9 @@ router bgp 65101
    vrf RED
       rd 10.255.10.13:110
       route-target import evpn 110:110
+      route-target import evpn 220:220
       route-target export evpn 110:110
+      route-target export evpn 220:220
       router-id 10.255.10.13
       neighbor 10.255.242.21 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected

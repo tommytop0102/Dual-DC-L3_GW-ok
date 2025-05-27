@@ -3,7 +3,7 @@ Et1                            up             up                 P2P_LINK_TO_DC1
 Et2                            up             up                 P2P_LINK_TO_DC1_SPINE2_Ethernet1
 Et3                            up             up                 MLAG_PEER_DC1_LEAF1B_Ethernet3
 Et4                            up             up                 MLAG_PEER_DC1_LEAF1B_Ethernet4
-Et5                            down           down               Trunk to DC1-CLIENT1_Eth1
+Et5                            up             up                 Trunk to DC1-CLIENT1_Eth1
 Et6                            up             up                 Access to DC1-CLIENT1_Eth2
 Lo0                            up             up                 EVPN_Overlay_Peering
 Lo1                            up             up                 VTEP_VXLAN_Tunnel_Source
